@@ -177,31 +177,32 @@ ul{line-height:1.46}
   <div class="side-panel"><strong>Site structure</strong><span>The strategy and appendices are now first-class pages within the portal.</span></div>
 </aside>
 <main class="main">
-  <section class="hero"><span class="eyebrow">Stevenage • LGR • Enterprise Architecture</span><h2>Appendix D: Architecture Decision Record Template</h2><p>The template for recording and assuring architecture decisions.</p></section>
+  <section class="hero"><span class="eyebrow">Stevenage • LGR • Enterprise Architecture</span><h2>Appendix D: Architecture Decision Record Template</h2><p>Enhanced template for recording decisions, transition costs, and rejected options.</p></section>
   
 <section class="section"><div class="panel">
 <h3>Purpose</h3>
-<p class="lead">Appendix D provides the Architecture Decision Record template. ADRs make architecture decisions traceable, auditable and reusable.</p>
+<p class="lead">Appendix D provides the Architecture Decision Record (ADR) template. ADRs make architecture decisions traceable, auditable, and aligned with national standards like LGAM.</p>
 </div></section>
 <section class="section"><div class="panel">
-<h3>ADR Template</h3>
+<h3>Enhanced ADR Template</h3>
+<p>The following template must be used for all significant technical and architectural decisions during the LGR programme.</p>
 <div class="table-wrap"><table class="table">
-<thead><tr><th>Field</th><th>Purpose</th></tr></thead>
+<thead><tr><th>Field</th><th>Purpose / Description</th></tr></thead>
 <tbody>
-<tr><td>ADR Reference</td><td>Unique identifier for the decision.</td></tr>
-<tr><td>Title</td><td>Short description of the decision.</td></tr>
-<tr><td>Status</td><td>Proposed, Approved, Approved with Conditions, Rejected, Superseded.</td></tr>
-<tr><td>Owner</td><td>Decision owner and responsible architect.</td></tr>
-<tr><td>Service Cluster</td><td>Customer, People, Place, Corporate or Technology.</td></tr>
-<tr><td>Context</td><td>Problem, drivers, constraints and assumptions.</td></tr>
-<tr><td>Options Considered</td><td>Options, benefits, risks and costs.</td></tr>
-<tr><td>Decision</td><td>Chosen option and decision date.</td></tr>
-<tr><td>Rationale</td><td>Why this decision is recommended.</td></tr>
-<tr><td>Impacts</td><td>Business, data, application, technology, security, equality, AI, finance and legal impacts.</td></tr>
-<tr><td>Conditions</td><td>Any conditions required before implementation.</td></tr>
-<tr><td>Review Date</td><td>When the decision should be revisited.</td></tr>
+<tr><td><strong>ADR Reference</strong></td><td>Unique identifier for the decision (e.g., ADR-042).</td></tr>
+<tr><td><strong>Title & Status</strong></td><td>Short description of the decision. Status: Proposed, Approved, Rejected.</td></tr>
+<tr><td><strong>Owner & Cluster</strong></td><td>Decision owner, responsible architect, and target Service Cluster.</td></tr>
+<tr><td><strong>Context & Drivers</strong></td><td>Problem statement, drivers, constraints, and LGR assumptions.</td></tr>
+<tr><td><strong>Options Considered</strong></td><td>Outline the viable options, benefits, risks, and costs.</td></tr>
+<tr><td><strong style="color:var(--red);">Alternatives Rejected</strong></td><td><strong>Crucial for LGR:</strong> Explicitly state why legacy systems or alternative models were not selected (to prevent repeated debates).</td></tr>
+<tr><td><strong>Decision</strong></td><td>The chosen option and decision date.</td></tr>
+<tr><td><strong>Rationale</strong></td><td>Why this decision is recommended over the alternatives.</td></tr>
+<tr><td><strong style="color:var(--emerald);">Compliance & Standards</strong></td><td>Detail alignment with the <strong>LGAM layers</strong>, <strong>NCSC guidelines</strong>, and <strong>Local Digital Declaration</strong>.</td></tr>
+<tr><td><strong style="color:var(--gold);">Cost & Transition</strong></td><td>Impact on licensing, migration effort, procurement lock-in, and operational expenditure (OpEx vs CapEx).</td></tr>
+<tr><td><strong>Impacts</strong></td><td>Business, data, application, tech, security, equality, and AI impacts.</td></tr>
+<tr><td><strong>Conditions & Review Date</strong></td><td>Conditions required before implementation and future review date.</td></tr>
 </tbody></table></div>
-<div class="callout"><strong>TOGAF alignment:</strong> Appendix D supports Requirements Management, Phase G and Phase H by recording decisions and managing change.</div>
+<div class="callout"><strong>TOGAF alignment:</strong> Appendix D supports Requirements Management, Phase G and Phase H by recording decisions and managing change robustly.</div>
 </div></section>
 
   <div class="footer">Stevenage Borough Council • Local Government Reorganisation • Enterprise Architecture Go-To Portal</div>

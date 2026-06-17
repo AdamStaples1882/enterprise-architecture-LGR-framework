@@ -177,29 +177,35 @@ ul{line-height:1.46}
   <div class="side-panel"><strong>Site structure</strong><span>The strategy and appendices are now first-class pages within the portal.</span></div>
 </aside>
 <main class="main">
-  <section class="hero"><span class="eyebrow">Stevenage • LGR • Enterprise Architecture</span><h2>Appendix F: RAG Risk Register</h2><p>RAG-rated risks, impacts, mitigations and ownership.</p></section>
+  <section class="hero"><span class="eyebrow">Stevenage • LGR • Enterprise Architecture</span><h2>Appendix F: RAG Risk Register</h2><p>RAG-rated risks, 5x5 scoring matrix, and LGR transition mitigations.</p></section>
   
 <section class="section"><div class="panel">
 <h3>Purpose</h3>
-<p class="lead">Appendix F provides the RAG-rated architecture risk register for SLT, programme teams and architects.</p>
+<p class="lead">Appendix F provides the RAG-rated architecture risk register for SLT and programme teams. It uses a structured Likelihood × Impact scoring model to manage LGR transition risks.</p>
 </div></section>
 <section class="section"><div class="panel">
-<h3>RAG Risk Register</h3>
+<h3>Risk Scoring Matrix (5x5)</h3>
+<p>Risks are scored by multiplying Likelihood (1-Rare to 5-Almost Certain) by Impact (1-Negligible to 5-Catastrophic).</p>
+<div class="grid-3">
+<div class="card red"><h4>High Risk (15–25)</h4><p>Immediate programme board escalation and daily monitoring.</p></div>
+<div class="card amber"><h4>Medium Risk (8–14)</h4><p>Active mitigation and tracked at weekly EA Stand-up.</p></div>
+<div class="card green"><h4>Low Risk (1–7)</h4><p>Routine monitoring and accepted tolerance.</p></div>
+</div>
+</div></section>
+<section class="section"><div class="panel">
+<h3>LGR Architecture Risk Register</h3>
 <div class="table-wrap"><table class="table">
-<thead><tr><th>RAG</th><th>Risk</th><th>Impact</th><th>Mitigation</th><th>Owner</th></tr></thead>
+<thead><tr><th>RAG</th><th>Score</th><th>Transition Risk</th><th>Impact</th><th>Mitigation</th><th>Owner</th></tr></thead>
 <tbody>
-<tr><td><span class="rag red">Red</span></td><td>Architect capacity overload</td><td>Delays, weak assurance and reliance on single individuals.</td><td>Four-domain model, weekly prioritisation and shared cluster working.</td><td>Head of EA</td></tr>
-<tr><td><span class="rag red">Red</span></td><td>Sensitive people-service data not understood early enough</td><td>Safeguarding, legal and service-continuity risks.</td><td>Prioritise adult care, children’s services, SEND and safeguarding discovery.</td><td>Business / Data Architects</td></tr>
-<tr><td><span class="rag red">Red</span></td><td>Vesting day minimum capability unclear</td><td>Future authority may not operate reliably from day one.</td><td>Define minimum viable operating capability for HR, payroll, finance, legal, identity, cyber and statutory services.</td><td>Head of EA / Programme Board</td></tr>
-<tr><td><span class="rag amber">Amber</span></td><td>County and district services mapped in silos</td><td>Fragmented design and unclear resident journeys.</td><td>Use five service clusters as one architecture model.</td><td>Business Architect</td></tr>
-<tr><td><span class="rag amber">Amber</span></td><td>Application duplication continues</td><td>Cost, complexity and poor user experience.</td><td>Application-to-service matrix and rationalisation options.</td><td>Application & Digital Architect</td></tr>
-<tr><td><span class="rag amber">Amber</span></td><td>Data quality treated too late</td><td>Migration failure and weak reporting.</td><td>Early data-domain mapping and data quality plan.</td><td>Data Architect</td></tr>
-<tr><td><span class="rag amber">Amber</span></td><td>Inconsistent cyber and identity controls</td><td>Security exposure and access failures.</td><td>Define shared identity, access and cyber baseline.</td><td>Technology & Security Architect</td></tr>
-<tr><td><span class="rag amber">Amber</span></td><td>Informal AI adoption</td><td>Bias, privacy, security and trust risk.</td><td>AI operating model and AI Architecture Board.</td><td>AI Board</td></tr>
-<tr><td><span class="rag green">Green</span></td><td>Architecture too detailed for SLT</td><td>Reduced engagement.</td><td>Use portal as executive layer with appendices beneath.</td><td>Head of EA</td></tr>
-<tr><td><span class="rag green">Green</span></td><td>Decisions not reusable</td><td>Repeated debate and inconsistency.</td><td>Use ADRs and architecture repository.</td><td>All Architects</td></tr>
+<tr><td><span class="rag red">Red</span></td><td><strong>20</strong></td><td>Legacy contract lock-in</td><td>Delays system consolidation; causes duplicate licensing costs on Day 1.</td><td>Immediate procurement audit and supplier renegotiation strategy.</td><td>App & Digital Architect</td></tr>
+<tr><td><span class="rag red">Red</span></td><td><strong>16</strong></td><td>Data sovereignty & merging conflicts</td><td>Data loss, GDPR breaches, and inability to merge resident records safely.</td><td>Strict Master Data Management (MDM) rules and automated quality gates.</td><td>Data Architect</td></tr>
+<tr><td><span class="rag red">Red</span></td><td><strong>15</strong></td><td>Vesting day minimum capability unclear</td><td>Future authority cannot operate payroll, HR, or statutory services legally.</td><td>Define strict "Day 1" Architecture baselines for enabling services.</td><td>Head of EA</td></tr>
+<tr><td><span class="rag amber">Amber</span></td><td><strong>12</strong></td><td>Loss of local service identity</td><td>Generic county-wide systems alienate local borough residents.</td><td>Ensure Customer cluster maintains localized branding/UX rules.</td><td>Business Architect</td></tr>
+<tr><td><span class="rag amber">Amber</span></td><td><strong>10</strong></td><td>Architect capacity overload</td><td>Delays in assurance, bottlenecking LGR project delivery.</td><td>Strict adherence to the 4-architect domain model and triage.</td><td>Head of EA</td></tr>
+<tr><td><span class="rag amber">Amber</span></td><td><strong>9</strong></td><td>Inconsistent cyber controls</td><td>Merging disparate council networks creates security vulnerabilities.</td><td>Enforce NCSC CAF baseline across all migrating domains.</td><td>Tech & Sec Architect</td></tr>
+<tr><td><span class="rag green">Green</span></td><td><strong>5</strong></td><td>Informal AI adoption</td><td>Shadow AI usage causes minor privacy concerns.</td><td>Establish AI Board and acceptable use policies early.</td><td>AI Board</td></tr>
 </tbody></table></div>
-<div class="callout"><strong>TOGAF alignment:</strong> Appendix F supports Requirements Management, Migration Planning, Implementation Governance and Change Management.</div>
+<div class="callout"><strong>TOGAF alignment:</strong> Appendix F supports Requirements Management, Migration Planning (Phase E), and Implementation Governance (Phase G).</div>
 </div></section>
 
   <div class="footer">Stevenage Borough Council • Local Government Reorganisation • Enterprise Architecture Go-To Portal</div>

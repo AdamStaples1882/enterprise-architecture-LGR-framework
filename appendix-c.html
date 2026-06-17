@@ -177,34 +177,43 @@ ul{line-height:1.46}
   <div class="side-panel"><strong>Site structure</strong><span>The strategy and appendices are now first-class pages within the portal.</span></div>
 </aside>
 <main class="main">
-  <section class="hero"><span class="eyebrow">Stevenage • LGR • Enterprise Architecture</span><h2>Appendix C: Architecture Governance Model</h2><p>Architecture assurance, forums, decision routes and escalation for LGR.</p></section>
+  <section class="hero"><span class="eyebrow">Stevenage • LGR • Enterprise Architecture</span><h2>Appendix C: Architecture Governance Model</h2><p>Architecture assurance, RACI matrix, decision routes, and standards alignment.</p></section>
   
 <section class="section"><div class="panel">
 <h3>Purpose</h3>
-<p class="lead">Appendix C defines the governance model that provides assurance, decision clarity and escalation routes for LGR architecture decisions.</p>
+<p class="lead">Appendix C defines the governance model that provides assurance, decision clarity, and escalation routes for LGR architecture decisions, aligned to the Local Digital Declaration.</p>
+</div></section>
+<section class="section"><div class="panel">
+<h3>Assurance Criteria & Standards</h3>
+<p>All architecture proposals must be assessed against national and local standards. Key criteria include:</p>
+<ul>
+<li><strong>Local Digital Declaration:</strong> Are we designing services that are secure, interoperable, and user-led?</li>
+<li><strong>GDS Service Standard:</strong> Does the digital channel meet accessibility and user-centric design principles?</li>
+<li><strong>NCSC Cyber Baseline:</strong> Does the technology comply with the Cyber Assessment Framework (CAF)?</li>
+<li><strong>Data Sovereignty:</strong> Is resident data hosted securely within UK boundaries?</li>
+</ul>
+</div></section>
+<section class="section"><div class="panel">
+<h3>Governance RACI Matrix</h3>
+<p>Clear accountability is required for rapid decision-making during the LGR transition phase.</p>
+<div class="table-wrap"><table class="table">
+<thead><tr><th>Governance Activity</th><th>Head of EA</th><th>Domain Architects</th><th>Service Leads</th><th>Programme Board</th></tr></thead>
+<tbody>
+<tr><td>Define Architecture Principles</td><td><strong>A / R</strong></td><td>C</td><td>I</td><td>I</td></tr>
+<tr><td>Approve ADRs (Standard)</td><td><strong>A</strong></td><td>R</td><td>C</td><td>I</td></tr>
+<tr><td>Approve Technical/Cyber Baseline</td><td>A</td><td><strong>R</strong></td><td>I</td><td>I</td></tr>
+<tr><td>Manage AI Architecture Risks</td><td>A</td><td>R</td><td>C</td><td>I</td></tr>
+<tr><td>Escalate Major Transition Risks</td><td>R</td><td>C</td><td>C</td><td><strong>A</strong></td></tr>
+</tbody></table></div>
+<p><small><strong>R</strong>esponsible (does the work), <strong>A</strong>ccountable (owns the result), <strong>C</strong>onsulted (provides input), <strong>I</strong>nformed (kept up to date).</small></p>
 </div></section>
 <section class="section"><div class="panel">
 <h3>Governance Forums</h3>
 <div class="grid-3">
-<div class="card green"><h4>EA Stand-up</h4><p>Weekly workload, priorities, blockers and support.</p></div>
-<div class="card blue"><h4>Architecture Design Authority</h4><p>Cross-domain design assurance and Architecture Decision Records.</p></div>
-<div class="card purple"><h4>Technical Design Authority</h4><p>Technical, cyber, cloud, infrastructure and resilience assurance.</p></div>
-<div class="card amber"><h4>AI Architecture Board</h4><p>AI proposal review, conditions, pilots and monitoring.</p></div>
-<div class="card rose"><h4>Roadmap Review</h4><p>Transition states, readiness, dependencies and exceptions.</p></div>
-<div class="card"><h4>LGR Programme Board</h4><p>Escalation for major risk, cost, scope, statutory or political decisions.</p></div>
+<div class="card green"><h4>Architecture Design Authority</h4><p>Cross-domain design assurance and ADR approval.</p></div>
+<div class="card blue"><h4>Technical Design Authority</h4><p>Technical, cyber, cloud, and infrastructure assurance.</p></div>
+<div class="card purple"><h4>AI Architecture Board</h4><p>AI proposal review, ethical conditions, and monitoring.</p></div>
 </div>
-</div></section>
-<section class="section"><div class="panel">
-<h3>Decision Flow</h3>
-<ol>
-<li>Proposal or project identifies architecture impact.</li>
-<li>EA triage determines assurance route.</li>
-<li>Relevant architects assess business, data, application, technology and AI implications.</li>
-<li>Design is reviewed by the appropriate forum.</li>
-<li>Decision is recorded through an ADR.</li>
-<li>Conditions, risks and dependencies are tracked.</li>
-<li>Escalations move to LGR Programme Board where required.</li>
-</ol>
 <div class="callout"><strong>TOGAF alignment:</strong> Appendix C mainly supports Phase G Implementation Governance and Phase H Architecture Change Management.</div>
 </div></section>
 

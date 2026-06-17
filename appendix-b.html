@@ -177,31 +177,34 @@ ul{line-height:1.46}
   <div class="side-panel"><strong>Site structure</strong><span>The strategy and appendices are now first-class pages within the portal.</span></div>
 </aside>
 <main class="main">
-  <section class="hero"><span class="eyebrow">Stevenage • LGR • Enterprise Architecture</span><h2>Appendix B: Service Cluster Model</h2><p>The five-cluster model for grouping county, district and borough services in LGR.</p></section>
+  <section class="hero"><span class="eyebrow">Stevenage • LGR • Enterprise Architecture</span><h2>Appendix B: Service Cluster Model</h2><p>The five-cluster model aligned to the Local Government Architecture Model (LGAM).</p></section>
   
 <section class="section"><div class="panel">
 <h3>Purpose</h3>
-<p class="lead">Appendix B defines the five service clusters used to organise LGR architecture work. It ensures county, district and borough services are brought together through one resident-led model.</p>
+<p class="lead">Appendix B defines the five service clusters used to organise LGR architecture work. It ensures county, district and borough services are brought together logically, aligned to the MHCLG Local Government Architecture Model (LGAM).</p>
 </div></section>
 <section class="section"><div class="panel">
-<h3>County and local service lists</h3>
-<div class="grid-2">
-<div class="card blue"><h4>County-scale services</h4><ul><li>Adult social care</li><li>Children’s social care</li><li>Education and SEND</li><li>School admissions and transport</li><li>Public health</li><li>Libraries and archives</li><li>Highways and transport</li><li>Waste disposal and recycling centres</li><li>Trading standards</li><li>Fire/public safety interfaces</li><li>Emergency planning</li><li>Registration services</li></ul></div>
-<div class="card green"><h4>District / borough / local services</h4><ul><li>Customer Services</li><li>Housing and homelessness</li><li>Planning and building control</li><li>Waste collection and street cleansing</li><li>Environmental health</li><li>Licensing and parking</li><li>Parks, open spaces and allotments</li><li>Community safety</li><li>Council Tax and benefits</li><li>Regeneration and economic development</li><li>HR, Finance, Legal and Democratic Services</li></ul></div>
-</div>
-</div></section>
-<section class="section"><div class="panel">
-<h3>Five Service Clusters</h3>
+<h3>LGAM Layer Alignment</h3>
+<p>To ensure national consistency and interoperability, the Stevenage service clusters are mapped to the standard Local Government Architecture Model (LGAM) layers.</p>
 <div class="table-wrap"><table class="table">
-<thead><tr><th>Cluster</th><th>Scope</th><th>County additions</th><th>Architecture focus</th></tr></thead>
+<thead><tr><th>Service Cluster</th><th>LGAM Layer</th><th>Key Systems & Capabilities</th></tr></thead>
 <tbody>
-<tr><td>1. Customer, Access and Resident Experience</td><td>Customer Services, contact, web, CRM, complaints, FOI, assisted digital.</td><td>Adult care first contact, school admissions, Blue Badge, highways reporting, registration bookings.</td><td>Single front door, triage, accessibility, channel strategy and CRM routing.</td></tr>
-<tr><td>2. Community, Housing and People Services</td><td>Housing, homelessness, community safety, wellbeing and support for vulnerable residents.</td><td>Adult care, children’s services, SEND, public health, libraries and youth services.</td><td>Safeguarding, case management, sensitive data, multi-agency working and prevention.</td></tr>
-<tr><td>3. Place, Environment and Regulatory Services</td><td>Planning, waste collection, environmental health, licensing, parking and regeneration.</td><td>Highways, transport, waste disposal, flood risk, trading standards, emergency planning.</td><td>UPRN, USRN, GIS, assets, field working and regulatory case management.</td></tr>
-<tr><td>4. Corporate and Enabling Services</td><td>HR, Finance, Payroll, Legal, Procurement, Democratic Services and PMO.</td><td>County-scale corporate services, commissioning, pensions interfaces and insurance.</td><td>Vesting day operating capability, ERP, workforce, finance, contracts and governance.</td></tr>
-<tr><td>5. Technology, Data, AI and Shared Platforms</td><td>Identity, cyber, cloud, integration, reporting, M365 and shared data.</td><td>Care, education, highways, public health and county-wide platforms.</td><td>Shared foundations, resilience, integration, data platform and AI controls.</td></tr>
+<tr><td><strong>1. Customer & Resident Experience</strong></td><td>Public Channels & Interactions</td><td>CRM, Website, Customer Portals, Assisted Digital Channels.</td></tr>
+<tr><td><strong>2. Community & People Services</strong></td><td>Business Areas (People)</td><td>Adult/Children Social Care Systems, Safeguarding, Housing Management.</td></tr>
+<tr><td><strong>3. Place & Environment</strong></td><td>Business Areas (Place)</td><td>Planning Systems, GIS, Waste Management, Regulatory Services.</td></tr>
+<tr><td><strong>4. Corporate & Enabling</strong></td><td>Cross-Cutting Services</td><td>ERP, HR/Payroll, Procurement, Democratic Services platforms.</td></tr>
+<tr><td><strong>5. Technology, Data & AI</strong></td><td>Foundational Technology</td><td>Azure/AWS Cloud, Identity (Entra ID), Data Lake, API Gateway.</td></tr>
 </tbody></table></div>
-<div class="callout"><strong>TOGAF alignment:</strong> Appendix B supports Phase B Business Architecture and provides the organising structure for Phases C and D.</div>
+</div></section>
+<section class="section"><div class="panel">
+<h3>Inter-Cluster Interaction Model</h3>
+<p>During LGR, maintaining data flow between legacy and new clusters is critical. The interaction model dictates how cases and data transition across boundaries.</p>
+<div class="grid-3">
+<div class="card blue"><h4>Customer to Place</h4><p>A resident reports a pothole (Cluster 1). The CRM triggers an API call to the Highways Asset Management System (Cluster 3) using a standardised USRN.</p></div>
+<div class="card green"><h4>Customer to People</h4><p>A vulnerable resident contacts support (Cluster 1). Triage accesses master records and routes the case to Adult Social Care (Cluster 2) securely.</p></div>
+<div class="card purple"><h4>Corporate to All</h4><p>Foundational HR/Identity (Cluster 4) provisions role-based access for staff across all line-of-business applications (Clusters 1-3) via the Tech foundations (Cluster 5).</p></div>
+</div>
+<div class="callout"><strong>TOGAF alignment:</strong> Appendix B supports Phase B Business Architecture and provides the LGAM-aligned organising structure for Phases C and D.</div>
 </div></section>
 
   <div class="footer">Stevenage Borough Council • Local Government Reorganisation • Enterprise Architecture Go-To Portal</div>
