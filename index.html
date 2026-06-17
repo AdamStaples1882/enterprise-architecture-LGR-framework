@@ -1,0 +1,922 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SBC LGR EA Go-To Portal v6 Functional</title>
+<style>
+:root{
+  --forest:#003f37; --deep:#062f2a; --emerald:#007f6f; --teal:#0aa195;
+  --mint:#dff3ef; --mint2:#f6fbfa; --navy:#142c44; --blue:#286c99; --sky:#e8f4fb;
+  --purple:#5f4aa0; --lav:#f1eff9; --gold:#b97916; --amber:#fff4df;
+  --coral:#bd5648; --rose:#fff0ee; --red:#b42318; --red-bg:#fff1f0;
+  --green-rag:#14804a; --green-bg:#e9f7ef; --amber-rag:#b7791f; --amber-bg:#fff8e6;
+  --ink:#172824; --muted:#5f716c; --line:#d7e4e0; --bg:#eef4f3; --white:#fff;
+  --shadow:0 24px 70px rgba(7,42,37,.15); --soft:0 14px 36px rgba(7,42,37,.09);
+  --glass:rgba(255,255,255,.84);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 86% 3%, rgba(95,74,160,.18), transparent 30%),
+    radial-gradient(circle at 8% 9%, rgba(0,127,111,.18), transparent 27%),
+    linear-gradient(135deg,#eef4f3 0%,#f8fbfb 48%,#edf5f3 100%);
+  color:var(--ink);
+  font-family:Arial, Helvetica, sans-serif;
+  letter-spacing:-0.01em;
+}
+a{color:var(--forest);font-weight:800;text-decoration:none}
+a:hover{text-decoration:underline}
+.app{display:grid;grid-template-columns:340px minmax(0,1fr);min-height:100vh}
+.sidebar{
+  background:radial-gradient(circle at 20% 0%, rgba(10,161,149,.22), transparent 26%),linear-gradient(180deg,var(--forest),var(--deep));
+  color:#fff;
+  padding:30px 24px;
+  position:sticky;top:0;height:100vh;overflow:auto;
+  border-right:1px solid rgba(255,255,255,.12);
+}
+.logo{padding:0 4px 22px;border-bottom:1px solid rgba(255,255,255,.16)}
+.logo-mark{
+  width:60px;height:60px;border-radius:20px;
+  background:linear-gradient(135deg,#fff,var(--mint));
+  color:var(--forest);display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:21px;margin-bottom:16px;
+  box-shadow:0 12px 28px rgba(0,0,0,.18);
+}
+.logo h1{margin:0 0 8px;font-size:25px;line-height:1.12}
+.logo p{margin:0;color:#d7eee9;font-size:13.5px;line-height:1.45}
+.nav-title{margin:24px 0 11px;text-transform:uppercase;letter-spacing:.11em;font-size:11px;color:#bde4dd;font-weight:800}
+.nav{display:flex;flex-direction:column;gap:8px}
+.nav a{
+  color:#fff;text-decoration:none;padding:12px 13px;border-radius:14px;
+  border:1px solid rgba(255,255,255,.11);
+  background:rgba(255,255,255,.055);
+  font-size:14px;line-height:1.28;
+}
+.nav a:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.26);text-decoration:none}
+.side-panel{margin-top:26px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:17px}
+.side-panel strong{display:block;margin-bottom:7px;font-size:14px}.side-panel span{display:block;color:#d7eee9;font-size:13px;line-height:1.42}
+.main{padding:34px 38px 56px;max-width:1580px;width:100%}
+.hero{
+  background:linear-gradient(135deg,rgba(255,255,255,.96),rgba(255,255,255,.86)),linear-gradient(135deg,var(--mint),var(--sky));
+  border:1px solid rgba(255,255,255,.95);
+  border-radius:34px;
+  box-shadow:var(--shadow);
+  padding:36px;
+  position:relative;overflow:hidden;margin-bottom:28px;
+}
+.hero:after{content:"";position:absolute;right:-110px;top:-130px;width:360px;height:360px;border-radius:50%;background:linear-gradient(135deg,rgba(0,127,111,.19),rgba(95,74,160,.17))}
+.eyebrow{display:inline-flex;gap:8px;padding:9px 13px;border-radius:999px;background:rgba(223,243,239,.95);color:var(--forest);font-weight:900;font-size:12.5px;border:1px solid rgba(0,127,111,.20);position:relative;z-index:1;text-transform:uppercase;letter-spacing:.06em}
+.hero h1{position:relative;z-index:1;margin:18px 0 13px;color:var(--forest);font-size:clamp(34px,3.2vw,50px);line-height:1.04;max-width:1160px}
+.hero p{position:relative;z-index:1;margin:0;color:#4b625d;font-size:17px;line-height:1.58;max-width:1160px}
+.section{margin-top:28px;scroll-margin-top:24px}
+.panel{background:var(--glass);border:1px solid rgba(215,228,224,.95);border-radius:30px;box-shadow:var(--soft);padding:30px;backdrop-filter:blur(10px)}
+.panel h2{margin:0 0 11px;color:var(--forest);font-size:30px;line-height:1.16}
+.panel h3{margin:20px 0 10px;color:var(--forest);font-size:21px;line-height:1.25}
+.lead{margin:0 0 22px;color:var(--muted);font-size:16.5px;line-height:1.56;max-width:1200px}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.card{border:1px solid var(--line);background:#fff;border-radius:24px;padding:22px;min-width:0;box-shadow:0 8px 22px rgba(7,42,37,.045)}
+.card h3{margin:0 0 10px;color:var(--forest);font-size:20px;line-height:1.2}
+.card p{margin:0;color:var(--muted);font-size:15px;line-height:1.5}
+.card ul{margin:0;padding:0 0 0 20px}.card li{margin:0 0 8px;font-size:15px;line-height:1.43}
+.green{background:linear-gradient(180deg,#fff,var(--mint));border-color:#b7d8d2}.blue{background:linear-gradient(180deg,#fff,var(--sky));border-color:#c4dcea}.purple{background:linear-gradient(180deg,#fff,var(--lav));border-color:#d5cdec}.amber{background:linear-gradient(180deg,#fff,var(--amber));border-color:#ead5a6}.rose{background:linear-gradient(180deg,#fff,var(--rose));border-color:#efc6bf}
+.callout{margin-top:20px;padding:17px 19px;background:linear-gradient(90deg,rgba(223,243,239,.95),rgba(255,255,255,.88));border-left:7px solid var(--emerald);border-radius:20px;color:#3a544f;font-size:15px;line-height:1.5}
+.kpis{margin-top:22px;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;position:relative;z-index:1}
+.kpi{background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 8px 22px rgba(7,42,37,.045)}
+.kpi .value{font-size:30px;font-weight:900;margin-bottom:6px;color:var(--forest)}.kpi:nth-child(2) .value{color:var(--blue)}.kpi:nth-child(3) .value{color:var(--purple)}.kpi:nth-child(4) .value{color:var(--gold)}.kpi:nth-child(5) .value{color:var(--coral)}.kpi:nth-child(6) .value{color:var(--emerald)}.kpi .label{font-size:13.4px;line-height:1.36;color:var(--muted)}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:20px;margin-top:15px;background:#fff}
+.table{width:100%;border-collapse:separate;border-spacing:0;min-width:850px;background:#fff}
+.table th,.table td{text-align:left;vertical-align:top;padding:14px 15px;border-bottom:1px solid var(--line);font-size:14.3px;line-height:1.42}
+.table th{background:#f4faf8;color:var(--forest);font-weight:900;text-transform:uppercase;letter-spacing:.035em;font-size:12.5px}
+.table tr:last-child td{border-bottom:none}
+.walkthrough-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.walk-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 8px 22px rgba(7,42,37,.045);position:relative;overflow:hidden}
+.walk-card:before{content:"";position:absolute;left:0;top:0;width:100%;height:7px;background:var(--emerald)}.walk-card:nth-child(2):before{background:var(--blue)}.walk-card:nth-child(3):before{background:var(--purple)}.walk-card:nth-child(4):before{background:var(--gold)}
+.walk-card strong{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--forest);color:#fff;margin-bottom:12px;font-size:17px}.walk-card h3{margin:0 0 8px;color:var(--forest);font-size:19px}.walk-card p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.45}
+.service-matrix{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.service-list{border:1px solid var(--line);border-radius:24px;padding:22px;background:#fff;box-shadow:0 8px 22px rgba(7,42,37,.045)}
+.service-list h3{margin:0 0 10px;color:var(--forest);font-size:21px}.service-list .subtitle{margin:0 0 14px;color:var(--muted);font-size:14.5px;line-height:1.4}.service-list ul{margin:0;padding:0 0 0 20px;columns:2;column-gap:26px}.service-list li{break-inside:avoid;margin:0 0 8px;font-size:14.3px;line-height:1.35}
+.cluster-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.cluster{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px;min-width:0;position:relative;overflow:hidden;box-shadow:0 8px 22px rgba(7,42,37,.045)}
+.cluster:before{content:"";position:absolute;left:0;top:0;width:100%;height:7px;background:var(--emerald)}.cluster:nth-child(2):before{background:var(--purple)}.cluster:nth-child(3):before{background:var(--blue)}.cluster:nth-child(4):before{background:var(--gold)}.cluster:nth-child(5):before{background:var(--coral)}
+.num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:18px;margin:6px 0 12px;background:var(--forest)}
+.cluster h3{margin:0 0 8px;color:var(--forest);font-size:18px;line-height:1.2}.cluster p{margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.4}.tags{display:flex;flex-wrap:wrap;gap:6px}.tag{padding:5px 8px;border-radius:999px;background:#f5faf9;border:1px solid var(--line);font-size:12px;color:#46605c}
+.appendix-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.appendix-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 8px 22px rgba(7,42,37,.045)}.appendix-card h3{margin:0 0 9px;color:var(--forest);font-size:20px}.appendix-card p{margin:0 0 12px;color:var(--muted);font-size:14.5px;line-height:1.45}.appendix-card a{display:inline-flex;margin-top:6px;padding:9px 12px;border-radius:999px;background:var(--mint);border:1px solid #b7d8d2;color:var(--forest);font-weight:900;text-decoration:none;font-size:13px}
+.rag{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-weight:900;font-size:12px;white-space:nowrap}.rag:before{content:"";width:9px;height:9px;border-radius:50%}.rag.red{background:var(--red-bg);color:var(--red);border:1px solid #f2b8b5}.rag.red:before{background:var(--red)}.rag.amber{background:var(--amber-bg);color:var(--amber-rag);border:1px solid #f3d993}.rag.amber:before{background:var(--amber-rag)}.rag.green{background:var(--green-bg);color:var(--green-rag);border:1px solid #a7dfbd}.rag.green:before{background:var(--green-rag)}
+.footer{text-align:center;color:var(--muted);font-size:13px;margin-top:30px}
+@media(max-width:1380px){.app{grid-template-columns:1fr}.sidebar{position:relative;height:auto}.kpis,.cluster-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-4,.grid-3,.walkthrough-grid,.appendix-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:920px){.main{padding:20px}.hero{padding:26px}.grid-2,.grid-3,.grid-4,.kpis,.walkthrough-grid,.service-matrix,.cluster-grid,.appendix-grid{grid-template-columns:1fr}.table{min-width:760px}.service-list ul{columns:1}}
+
+.validation-banner{
+  margin-top:18px;
+  padding:18px 20px;
+  border-radius:22px;
+  background:linear-gradient(90deg,var(--amber),#fffaf0);
+  border:1px solid #ead5a6;
+  border-left:7px solid var(--gold);
+  color:#4f4124;
+  font-size:15px;
+  line-height:1.5;
+}
+.service-coverage-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:20px;
+}
+.coverage-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:22px;
+  box-shadow:0 8px 22px rgba(7,42,37,.045);
+}
+.coverage-card h3,.coverage-card h4{
+  margin:0 0 10px;
+  color:var(--forest);
+  font-size:21px;
+}
+.coverage-card .subtitle{
+  margin:0 0 14px;
+  color:var(--muted);
+  font-size:14.5px;
+  line-height:1.42;
+}
+.service-columns{
+  columns:2;
+  column-gap:28px;
+  margin:0;
+  padding-left:20px;
+}
+.service-columns li{
+  break-inside:avoid;
+  margin:0 0 8px;
+  font-size:14.2px;
+  line-height:1.36;
+}
+.cluster-detail-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:20px;
+}
+.cluster-detail{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:24px;
+  box-shadow:0 8px 22px rgba(7,42,37,.045);
+  position:relative;
+  overflow:hidden;
+}
+.cluster-detail:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  height:8px;
+  width:100%;
+  background:var(--emerald);
+}
+.cluster-detail:nth-child(2):before{background:var(--purple)}
+.cluster-detail:nth-child(3):before{background:var(--blue)}
+.cluster-detail:nth-child(4):before{background:var(--gold)}
+.cluster-detail:nth-child(5):before{background:var(--coral)}
+.cluster-detail-header{
+  display:grid;
+  grid-template-columns:52px minmax(0,1fr);
+  gap:14px;
+  align-items:start;
+  margin-bottom:14px;
+}
+.cluster-detail-header .num{
+  margin:0;
+}
+.cluster-detail h3{
+  margin:0 0 6px;
+  color:var(--forest);
+  font-size:24px;
+  line-height:1.18;
+}
+.cluster-detail p{
+  margin:0;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.45;
+}
+.cluster-service-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  margin-top:18px;
+}
+.cluster-service-box{
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:16px;
+  background:#fbfefd;
+}
+.cluster-service-box h4{
+  margin:0 0 10px;
+  color:var(--forest);
+  font-size:16px;
+  line-height:1.25;
+}
+.cluster-service-box ul{
+  margin:0;
+  padding-left:18px;
+}
+.cluster-service-box li{
+  margin:0 0 7px;
+  font-size:14px;
+  line-height:1.34;
+}
+.source-note{
+  margin-top:14px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45;
+}
+@media(max-width:1180px){
+  .service-coverage-grid{grid-template-columns:1fr}
+  .cluster-service-grid{grid-template-columns:1fr}
+  .service-columns{columns:1}
+}
+
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="logo">
+    <div class="logo-mark">EA</div>
+    <h1>SBC LGR EA Go-To Portal</h1>
+    <p>Functional single-preview version with the overview, strategy and appendices all embedded as sections.</p>
+  </div>
+  
+<div class="nav-title">Walkthrough</div>
+<nav class="nav">
+  <a href="#overview">Overview dashboard</a>
+  <a href="#walkthrough">Guided walkthrough</a>
+  <a href="#why">Why this model exists</a>
+  <a href="#service-lists">County and local service lists</a>
+  <a href="#clusters">How the LGR work is organised</a>
+  <a href="#architects">Architect focus</a>
+  <a href="#accountability">Architect accountabilities</a>
+  <a href="#togaf">TOGAF linkage</a>
+  <a href="#ai">AI operating model</a>
+  <a href="#governance">Governance</a>
+  <a href="#roadmap">Roadmap</a>
+  <a href="#risks">RAG risks</a>
+</nav>
+<div class="nav-title">Strategy and Appendices</div>
+<nav class="nav">
+  <a href="#strategy">Overall Strategy</a>
+  <a href="#appendices">Appendices A to F</a>
+</nav>
+
+  <div class="side-panel"><strong>Reviewed for preview</strong><span>All main content now opens inside this single HTML page using anchors, avoiding page-to-page preview issues.</span></div>
+</aside>
+<main class="main">
+  <section class="hero">
+    <span class="eyebrow">Stevenage • LGR • Enterprise Architecture</span>
+    <h1>LGR Enterprise Architecture Go-To Portal</h1>
+    <p>A guided walkthrough for the LGR Enterprise Architecture Operating Model, with the overall strategy and appendices retained as detailed sections in the same preview.</p>
+  </section>
+  
+<section class="section" id="overview">
+  <div class="panel">
+    <h2>Overview dashboard</h2>
+    <p class="lead">This is the working front door for the LGR Enterprise Architecture Operating Model. It keeps the overview, strategy and appendices in one functional preview, while still preserving the logic of separate pages through clearly named sections.</p>
+    <div class="kpis">
+      <div class="kpi"><div class="value">4</div><div class="label">Enterprise Architecture domains</div></div>
+      <div class="kpi"><div class="value">5</div><div class="label">Service clusters</div></div>
+      <div class="kpi"><div class="value">AI</div><div class="label">Separate governance route</div></div>
+      <div class="kpi"><div class="value">RAG</div><div class="label">Risk visibility</div></div>
+      <div class="kpi"><div class="value">TOGAF</div><div class="label">Method and traceability</div></div>
+      <div class="kpi"><div class="value">SLT</div><div class="label">Decision focused</div></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="walkthrough">
+  <div class="panel">
+    <h2>Guided walkthrough</h2>
+    <p class="lead">The walkthrough explains the model in the order senior leaders need to understand it: why it exists, what services are in scope, how the work is organised, what architects are accountable for, how TOGAF connects the method, why AI is separate, how governance works, and how risks are managed.</p>
+    <div class="walkthrough-grid">
+      <div class="walk-card"><strong>1</strong><h3>Understand why</h3><p>Start with the reason for the model and the need for a supportive architecture environment.</p></div>
+      <div class="walk-card"><strong>2</strong><h3>Understand the scope</h3><p>Review the county and local service lists so LGR scope is explicit.</p></div>
+      <div class="walk-card"><strong>3</strong><h3>Understand accountability</h3><p>See what each Enterprise Architect is accountable for and why it matters.</p></div>
+      <div class="walk-card"><strong>4</strong><h3>Use the appendices</h3><p>Use the strategy and appendices at the bottom as detailed reference material.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="why">
+  <div class="panel">
+    <h2>Why this model exists</h2>
+    <p class="lead">The model exists to manage Local Government Reorganisation in a structured, supportive and low-risk way. It prevents one architect from carrying the full burden, gives SLT a clear view of risk and dependencies, and helps services fit together logically from the resident front door through to shared digital foundations.</p>
+    <div class="grid-4">
+      <div class="card green"><h3>Supportive by design</h3><p>Work is distributed across four architects, with shared governance and visible prioritisation.</p></div>
+      <div class="card blue"><h3>Resident-led</h3><p>The sequence starts with Customer Services and follows the resident journey into operational and enabling services.</p></div>
+      <div class="card purple"><h3>Clear accountability</h3><p>Each architect has a defined domain, linked to service areas, outputs and evidence.</p></div>
+      <div class="card amber"><h3>Better decisions</h3><p>SLT gets clearer options, risks, dependencies, trade-offs and escalation routes.</p></div>
+    </div>
+    <div class="callout"><strong>Executive message:</strong> this is not a technical structure for its own sake. It is a practical delivery model for safer LGR design and transition.</div>
+  </div>
+</section>
+
+
+
+
+<section class="section" id="validation-caveat">
+  <div class="panel">
+    <h2>Validation caveat</h2>
+    <div class="validation-banner">
+      <strong>Important:</strong> the service and capability coverage in this portal has been checked against national county/district responsibilities and public Hertfordshire and Stevenage service categories. It is a strong architecture baseline, but it must be validated through formal LGR discovery with service owners, statutory officers, finance, HR, legal, information governance, suppliers and programme governance before it is used as a final transition inventory.
+    </div>
+  </div>
+</section>
+
+<section class="section" id="service-lists">
+  <div class="panel">
+    <h2>County and local government service lists</h2>
+    <p class="lead">This section makes the service coverage explicit. It is designed as a practical discovery baseline for LGR, bringing together the national county and district split, Hertfordshire County Council service categories and Stevenage Borough Council service areas.</p>
+
+    <div class="validation-banner">
+      <strong>Validation caveat:</strong> this is a comprehensive architecture baseline, not a final legally binding service inventory. It must be validated with Hertfordshire County Council, Stevenage Borough Council service owners, statutory officers, finance, HR, legal, information governance, the LGR programme and any successor authority design work. Service names, responsibilities, statutory duties, contracts, systems and data ownership should be confirmed through formal discovery.
+    </div>
+
+    <div style="height:18px"></div>
+    <div class="service-coverage-grid">
+      <div class="coverage-card">
+        <h3>County-scale services and capabilities to include</h3>
+        <p class="subtitle">Strategic and county-wide responsibilities that need to be reflected in LGR discovery, architecture and transition planning.</p>
+        <ul class="service-columns">
+          <li>Adult social care</li>
+          <li>Care assessments and support planning</li>
+          <li>Safeguarding adults</li>
+          <li>Equipment, adaptations, homecare and care options</li>
+          <li>Carers support</li>
+          <li>Dementia, autism and mental health support interfaces</li>
+          <li>Blue Badge and mobility-related support</li>
+          <li>Day services and community support</li>
+          <li>Children’s social care</li>
+          <li>Children’s safeguarding front door</li>
+          <li>Children in care and care leavers</li>
+          <li>Fostering and adoption interfaces</li>
+          <li>Early help and family support</li>
+          <li>Schools and education</li>
+          <li>School admissions</li>
+          <li>SEND services and education support</li>
+          <li>Early years and childcare support</li>
+          <li>Free school meals and school support routes</li>
+          <li>Home to school transport</li>
+          <li>Public health</li>
+          <li>Libraries and archives</li>
+          <li>Registration services, births, deaths, marriages and citizenship</li>
+          <li>Highways, roads and pavements</li>
+          <li>Traffic management and road safety</li>
+          <li>Street lighting</li>
+          <li>Rights of way</li>
+          <li>Transport planning and public transport coordination</li>
+          <li>Waste disposal and household recycling centres</li>
+          <li>Recycling, waste, environment and planning at county scale</li>
+          <li>Flood risk management</li>
+          <li>Minerals and waste planning</li>
+          <li>Business and trading standards</li>
+          <li>Consumer protection and business advice</li>
+          <li>Fire and rescue</li>
+          <li>Community protection and emergency planning</li>
+          <li>County-scale commissioning and contract management</li>
+          <li>County-scale finance, HR, legal, democratic and corporate resources</li>
+          <li>County data, GIS, identity, cyber and shared platforms</li>
+        </ul>
+      </div>
+
+      <div class="coverage-card">
+        <h3>District, borough and local services and capabilities to include</h3>
+        <p class="subtitle">Localised responsibilities and operational services that need to be aligned with county services under LGR.</p>
+        <ul class="service-columns">
+          <li>Customer Services and contact centre</li>
+          <li>Reception, face-to-face access and assisted digital</li>
+          <li>Website, online forms and digital content</li>
+          <li>CRM, resident portals and self-service</li>
+          <li>Complaints, FOI and information request routes</li>
+          <li>Resident communications and consultations</li>
+          <li>Council Tax and revenues</li>
+          <li>Benefits administration</li>
+          <li>Housing strategy</li>
+          <li>Housing options and homelessness</li>
+          <li>Temporary accommodation</li>
+          <li>Tenancy management</li>
+          <li>Council housing repairs and compliance</li>
+          <li>Garages and housing estates</li>
+          <li>Community safety and anti-social behaviour</li>
+          <li>Safety and wellbeing services</li>
+          <li>Planning applications</li>
+          <li>Planning policy and local plan interfaces</li>
+          <li>Planning enforcement</li>
+          <li>Building control</li>
+          <li>Land charges and property information</li>
+          <li>Waste collection</li>
+          <li>Recycling collection</li>
+          <li>Missed bin and bulky waste services</li>
+          <li>Street cleansing</li>
+          <li>Environmental health</li>
+          <li>Food safety, noise, pollution and pest control</li>
+          <li>Licensing and registration at district level</li>
+          <li>Parking, car parks and civil enforcement</li>
+          <li>Parks, open spaces and play areas</li>
+          <li>Allotments, cemeteries and crematoria</li>
+          <li>Regeneration, economic development and town centre management</li>
+          <li>Business and commercial services</li>
+          <li>Local land, property, estates and facilities</li>
+          <li>Democratic Services and member support</li>
+          <li>Elections and electoral registration</li>
+          <li>HR, payroll, finance, procurement, legal, audit, risk and PMO</li>
+          <li>Local data, applications, devices, cyber and technology support</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="source-note"><strong>Source basis:</strong> national county/district responsibilities, Hertfordshire County Council published service categories, and Stevenage Borough Council published service access categories. These must be validated locally before being used as a formal transition inventory.</p>
+  </div>
+</section>
+
+
+
+<section class="section" id="clusters">
+  <div class="panel">
+    <h2>How the LGR work is organised</h2>
+    <p class="lead">The clusters now show the services and capabilities inside each section. The purpose is to make the scope visible for SLT, programme teams and architects, while still keeping the model simple enough to use as a walkthrough.</p>
+
+    <div class="cluster-detail-grid">
+
+      <article class="cluster-detail">
+        <div class="cluster-detail-header">
+          <div class="num">1</div>
+          <div>
+            <h3>Customer, Access and Resident Experience</h3>
+            <p>The single front door for residents, businesses, members and partners. This cluster is about access, triage, status, communication and safe handoff into specialist services.</p>
+          </div>
+        </div>
+        <div class="cluster-service-grid">
+          <div class="cluster-service-box">
+            <h4>Local services in scope</h4>
+            <ul>
+              <li>Customer Services</li>
+              <li>Contact centre</li>
+              <li>Reception and face-to-face access</li>
+              <li>Website, online forms and digital content</li>
+              <li>CRM, portals and self-service</li>
+              <li>Complaints, compliments and feedback</li>
+              <li>FOI, EIR and subject access request routes</li>
+              <li>Assisted digital and accessibility support</li>
+              <li>Resident communications and consultations</li>
+            </ul>
+          </div>
+          <div class="cluster-service-box">
+            <h4>County services in scope</h4>
+            <ul>
+              <li>Adult social care first contact</li>
+              <li>Children’s services access routes</li>
+              <li>SEND enquiries and advice routes</li>
+              <li>School admissions enquiries</li>
+              <li>Home to school transport enquiries</li>
+              <li>Highways and street fault reporting</li>
+              <li>Blue Badge enquiries and applications</li>
+              <li>Library enquiries and digital access support</li>
+              <li>Registration appointments</li>
+              <li>Public health information and campaigns</li>
+              <li>Transport and travel enquiries</li>
+            </ul>
+          </div>
+          <div class="cluster-service-box">
+            <h4>Capabilities to design</h4>
+            <ul>
+              <li>Single Customer Record</li>
+              <li>Service catalogue and knowledge base</li>
+              <li>Channel strategy and triage rules</li>
+              <li>Safeguarding and urgent-risk handoff</li>
+              <li>Case status and notifications</li>
+              <li>Accessibility, translation and reasonable adjustments</li>
+              <li>CRM-to-specialist-system routing</li>
+              <li>Contact demand analytics</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="cluster-detail">
+        <div class="cluster-detail-header">
+          <div class="num">2</div>
+          <div>
+            <h3>Community, Housing and People Services</h3>
+            <p>People-focused services, households, families, housing, care, community wellbeing and support for vulnerable residents.</p>
+          </div>
+        </div>
+        <div class="cluster-service-grid">
+          <div class="cluster-service-box">
+            <h4>Local services in scope</h4>
+            <ul>
+              <li>Housing strategy and housing options</li>
+              <li>Homelessness and temporary accommodation</li>
+              <li>Tenancy management</li>
+              <li>Housing repairs, compliance and planned works</li>
+              <li>Garages and housing estates</li>
+              <li>Community safety</li>
+              <li>Anti-social behaviour</li>
+              <li>Safety and wellbeing</li>
+              <li>Community development and voluntary sector links</li>
+              <li>Leisure, culture and wellbeing partnerships</li>
+              <li>Local health partnerships</li>
+            </ul>
+          </div>
+          <div class="cluster-service-box">
+            <h4>County services in scope</h4>
+            <ul>
+              <li>Adult social care</li>
+              <li>Adult safeguarding</li>
+              <li>Care assessments and support planning</li>
+              <li>Equipment, homecare and care options</li>
+              <li>Carers support</li>
+              <li>Dementia, autism and mental health interfaces</li>
+              <li>Children’s social care</li>
+              <li>Children’s safeguarding</li>
+              <li>Children in care and care leavers</li>
+              <li>Early help and family support</li>
+              <li>Fostering and adoption interfaces</li>
+              <li>SEND and education support</li>
+              <li>Early years and childcare support</li>
+              <li>Public health and prevention</li>
+              <li>Libraries, archives and community learning</li>
+              <li>Youth services</li>
+            </ul>
+          </div>
+          <div class="cluster-service-box">
+            <h4>Capabilities to design</h4>
+            <ul>
+              <li>Complex needs triage</li>
+              <li>Multi-agency case management</li>
+              <li>Safeguarding escalation</li>
+              <li>Resident, household and family data</li>
+              <li>Highly sensitive data controls</li>
+              <li>Care and housing system interfaces</li>
+              <li>Community prevention and early intervention</li>
+              <li>Equality, vulnerability and digital inclusion insight</li>
+              <li>Professional workflow and audit</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="cluster-detail">
+        <div class="cluster-detail-header">
+          <div class="num">3</div>
+          <div>
+            <h3>Place, Environment and Regulatory Services</h3>
+            <p>Place-based services, infrastructure, environment, regulation, enforcement, public realm and local resilience.</p>
+          </div>
+        </div>
+        <div class="cluster-service-grid">
+          <div class="cluster-service-box">
+            <h4>Local services in scope</h4>
+            <ul>
+              <li>Planning applications</li>
+              <li>Planning policy and local plan interfaces</li>
+              <li>Planning enforcement</li>
+              <li>Building control</li>
+              <li>Waste collection and recycling collection</li>
+              <li>Missed bins, bulky waste and street cleansing</li>
+              <li>Environmental health</li>
+              <li>Food safety, noise, pollution and pest control</li>
+              <li>Licensing and registration at district level</li>
+              <li>Parking, car parks and civil enforcement</li>
+              <li>Parks, open spaces, play areas and allotments</li>
+              <li>Cemeteries and crematoria</li>
+              <li>Local land, property and estates</li>
+              <li>Regeneration and economic development</li>
+              <li>Town centre management and markets</li>
+            </ul>
+          </div>
+          <div class="cluster-service-box">
+            <h4>County services in scope</h4>
+            <ul>
+              <li>Highways, roads and pavements</li>
+              <li>Highways maintenance and asset management</li>
+              <li>Traffic management and road safety</li>
+              <li>Street lighting</li>
+              <li>Rights of way</li>
+              <li>Transport planning and public transport coordination</li>
+              <li>School transport</li>
+              <li>Waste disposal and household recycling centres</li>
+              <li>Recycling, waste, environment and planning at county scale</li>
+              <li>Flood risk management</li>
+              <li>Minerals and waste planning</li>
+              <li>Business and trading standards</li>
+              <li>Consumer protection and business advice</li>
+              <li>Fire and rescue interfaces</li>
+              <li>Emergency planning and community protection</li>
+            </ul>
+          </div>
+          <div class="cluster-service-box">
+            <h4>Capabilities to design</h4>
+            <ul>
+              <li>UPRN, USRN and GIS foundations</li>
+              <li>Property, street, asset and location data</li>
+              <li>Regulatory case management</li>
+              <li>Inspection and enforcement workflow</li>
+              <li>Field working and mobile access</li>
+              <li>Contractor and partner integration</li>
+              <li>Operational reporting and performance</li>
+              <li>Climate, sustainability and net zero insight</li>
+              <li>Emergency response coordination</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="cluster-detail">
+        <div class="cluster-detail-header">
+          <div class="num">4</div>
+          <div>
+            <h3>Corporate and Enabling Services</h3>
+            <p>The internal capabilities needed to keep the current council and future authority legal, funded, staffed, governed and operational.</p>
+          </div>
+        </div>
+        <div class="cluster-service-grid">
+          <div class="cluster-service-box">
+            <h4>Local services in scope</h4>
+            <ul>
+              <li>HR and organisational development</li>
+              <li>Payroll</li>
+              <li>Finance, income and payments</li>
+              <li>Council Tax, revenues and benefits administration</li>
+              <li>Procurement and contract management</li>
+              <li>Legal services</li>
+              <li>Democratic Services and member support</li>
+              <li>Elections and electoral registration</li>
+              <li>Governance, risk and audit</li>
+              <li>Policy and performance</li>
+              <li>Communications</li>
+              <li>Programme Management Office</li>
+              <li>Facilities and accommodation</li>
+            </ul>
+          </div>
+          <div class="cluster-service-box">
+            <h4>County services in scope</h4>
+            <ul>
+              <li>County-scale finance and budget management</li>
+              <li>County HR, payroll and workforce transition</li>
+              <li>Strategic commissioning</li>
+              <li>Adult and children’s care commissioning</li>
+              <li>Education and transport commissioning</li>
+              <li>Pensions administration interfaces</li>
+              <li>County legal services and litigation</li>
+              <li>Insurance and claims management</li>
+              <li>Corporate performance and statutory returns</li>
+              <li>County estates and accommodation strategy</li>
+              <li>County democratic and corporate governance interfaces</li>
+            </ul>
+          </div>
+          <div class="cluster-service-box">
+            <h4>Capabilities to design</h4>
+            <ul>
+              <li>Minimum viable operating capability</li>
+              <li>Workforce transition and role mapping</li>
+              <li>Financial disaggregation and aggregation</li>
+              <li>Scheme of delegation and decision routes</li>
+              <li>ERP, HR, payroll and finance foundations</li>
+              <li>Contract novation and supplier continuity</li>
+              <li>Records, retention and knowledge transfer</li>
+              <li>Corporate reporting and risk dashboards</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="cluster-detail">
+        <div class="cluster-detail-header">
+          <div class="num">5</div>
+          <div>
+            <h3>Technology, Data, AI and Shared Platforms</h3>
+            <p>The shared foundation layer for all service clusters. This includes technology, cyber, data, integration, reporting and responsible AI governance.</p>
+          </div>
+        </div>
+        <div class="cluster-service-grid">
+          <div class="cluster-service-box">
+            <h4>Local and shared platforms in scope</h4>
+            <ul>
+              <li>Identity and access management</li>
+              <li>Cyber security and security operations</li>
+              <li>Networks, connectivity and remote access</li>
+              <li>Cloud, hosting and data centre services</li>
+              <li>M365 and collaboration tools</li>
+              <li>End-user devices and field worker equipment</li>
+              <li>Backup, disaster recovery and resilience</li>
+              <li>IT service management</li>
+              <li>CRM, ERP, finance, HR and payroll platforms</li>
+              <li>Data platform, reporting and business intelligence</li>
+            </ul>
+          </div>
+          <div class="cluster-service-box">
+            <h4>County platforms and data in scope</h4>
+            <ul>
+              <li>Adult care systems</li>
+              <li>Children’s services systems</li>
+              <li>Education and SEND systems</li>
+              <li>Highways and transport systems</li>
+              <li>Library management systems</li>
+              <li>Trading standards systems</li>
+              <li>Fire and rescue interfaces</li>
+              <li>Public health data platforms</li>
+              <li>GIS and location platforms</li>
+              <li>County networks, identity and records platforms</li>
+            </ul>
+          </div>
+          <div class="cluster-service-box">
+            <h4>Capabilities to design</h4>
+            <ul>
+              <li>Architecture repository</li>
+              <li>Data catalogue, lineage and metadata</li>
+              <li>Single Customer Record and master data patterns</li>
+              <li>API management and integration patterns</li>
+              <li>Service catalogue and knowledge base</li>
+              <li>Payment, booking and notification patterns</li>
+              <li>Responsible AI approval and monitoring</li>
+              <li>Technology standards and reusable patterns</li>
+              <li>Architecture Decision Records</li>
+              <li>Readiness heatmaps and transition roadmap</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="architects">
+  <div class="panel">
+    <h2>Architect focus</h2>
+    <p class="lead">The four architects operate as a single supportive team. Each has a primary domain, but the major LGR decisions are made through joined-up review.</p>
+    <div class="grid-2">
+      <div class="card green"><h3>Business Architect</h3><p>Operating model, service design, capability mapping, value streams, customer journeys and business change.</p></div>
+      <div class="card blue"><h3>Data Architect</h3><p>Data domains, quality, migration, information governance, reporting, insight and data sharing.</p></div>
+      <div class="card purple"><h3>Application and Digital Architect</h3><p>Applications, CRM, ERP, portals, case systems, integrations, supplier dependencies and rationalisation.</p></div>
+      <div class="card amber"><h3>Technology and Security Architect</h3><p>Cloud, identity, networks, devices, cyber controls, resilience, disaster recovery and technical standards.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="accountability">
+  <div class="panel">
+    <h2>What our Enterprise Architects are accountable for and why</h2>
+    <p class="lead">Each architect owns the integrity of their domain and contributes to joined-up LGR decisions. This gives SLT clarity on who is accountable for what.</p>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Architect role</th><th>Accountable for</th><th>Why this matters</th><th>Linked service areas</th><th>Key outputs</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Business Architect</strong></td><td>Target operating model, capability mapping, value streams, journeys and process design.</td><td>Ensures LGR improves how services work, not just how systems are moved.</td><td>Customer Access, People, Place and Corporate services.</td><td>Capability maps, TOM views, customer journeys and service value chains.</td></tr>
+        <tr><td><strong>Data Architect</strong></td><td>Data domains, standards, master data, quality, migration, reporting and information governance.</td><td>Reduces migration risk, fragmented records and weak reporting.</td><td>Care, housing, customer, property, planning, highways, finance and HR.</td><td>Data domain model, migration principles, data quality plan and reporting catalogue.</td></tr>
+        <tr><td><strong>Application and Digital Architect</strong></td><td>Applications, digital services, CRM, ERP, portals, case systems and integration patterns.</td><td>Prevents duplicated systems, disconnected journeys and unclear supplier dependencies.</td><td>Customer, housing, care, education, place, corporate and digital platforms.</td><td>Application portfolio, app-to-service matrix, integration catalogue and rationalisation options.</td></tr>
+        <tr><td><strong>Technology and Security Architect</strong></td><td>Technology foundations, identity, cyber, cloud, networks, devices, resilience and standards.</td><td>Ensures the future authority can operate securely from day one.</td><td>All clusters, with focus on shared platforms and service continuity.</td><td>Technology dependency map, cyber baseline, identity model and resilience plan.</td></tr>
+        <tr><td><strong>AI Governance Lead and AI Architecture Board</strong></td><td>AI triage, risk tiering, approval conditions, monitoring, transparency and human oversight.</td><td>Ensures AI is purposeful, lawful, secure, fair and trusted.</td><td>Customer Services, casework, reporting, HR, Finance, public health and productivity tools.</td><td>AI proposal register, risk assessment, pilot evaluation and monitoring plan.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+
+<section class="section" id="togaf">
+  <div class="panel">
+    <h2>How TOGAF links the portal together</h2>
+    <p class="lead">TOGAF provides the method behind the portal. The ADM links the strategy, service clusters, architecture domains, governance, roadmap, risks and appendices.</p>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>TOGAF ADM phase</th><th>Use in this LGR model</th><th>Where it appears</th></tr></thead>
+      <tbody>
+        <tr><td>Preliminary</td><td>Set up the EA capability, principles and governance.</td><td>Strategy, Appendix A and Governance.</td></tr>
+        <tr><td>Phase A: Architecture Vision</td><td>Define the strategic case and SLT narrative.</td><td>Overview, Strategy and Walkthrough.</td></tr>
+        <tr><td>Phase B: Business Architecture</td><td>Map services, capabilities, journeys and operating model impacts.</td><td>Service clusters, service lists and Business Architect accountability.</td></tr>
+        <tr><td>Phase C: Data and Application Architecture</td><td>Define data, reporting, systems, digital services and integration.</td><td>Data and Application Architect accountabilities.</td></tr>
+        <tr><td>Phase D: Technology Architecture</td><td>Define cloud, identity, cyber, infrastructure and resilience.</td><td>Technology Architect accountability and Technology cluster.</td></tr>
+        <tr><td>Phase E and F</td><td>Identify options and sequence transition planning.</td><td>Roadmap and RAG risks.</td></tr>
+        <tr><td>Phase G and H</td><td>Govern implementation and manage change.</td><td>Governance, ADRs and change control.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout"><strong>Plain English:</strong> TOGAF gives us the method, service clusters give us the organising structure, the architects provide domain leadership, and governance turns decisions into controlled delivery.</div>
+  </div>
+</section>
+
+
+<section class="section" id="ai">
+  <div class="panel">
+    <h2>AI operating model: separate for a reason</h2>
+    <p class="lead">AI is not just another technology tool. It is a cross-cutting strategic capability that needs visible governance, ethical controls, human oversight and ongoing monitoring.</p>
+    <div class="grid-2">
+      <div class="card purple"><h3>Why AI is separate</h3><ul><li>It affects all services and architecture domains.</li><li>It creates opportunity and public trust risk.</li><li>It can introduce bias, privacy and security concerns.</li><li>It needs visible SLT assurance.</li></ul></div>
+      <div class="card blue"><h3>How it works</h3><ul><li>Identify the problem and expected value.</li><li>Assess business, data, application and technology impact.</li><li>Govern through the AI Architecture Board.</li><li>Pilot safely with human oversight.</li><li>Monitor benefits, fairness, drift and compliance.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="governance">
+  <div class="panel">
+    <h2>Governance</h2>
+    <p class="lead">Governance provides early support, proportionate assurance and clear escalation routes.</p>
+    <div class="grid-3">
+      <div class="card green"><h3>EA Stand-up</h3><p>Workload, priorities, blockers and support.</p></div>
+      <div class="card blue"><h3>Architecture Design Authority</h3><p>Cross-domain decisions and Architecture Decision Records.</p></div>
+      <div class="card purple"><h3>Technical Design Authority</h3><p>Technical, cyber, cloud and resilience assurance.</p></div>
+      <div class="card amber"><h3>AI Architecture Board</h3><p>AI approval, conditions, pilots and monitoring.</p></div>
+      <div class="card rose"><h3>Roadmap Review</h3><p>Transition states, dependencies and readiness.</p></div>
+      <div class="card"><h3>LGR Programme Board</h3><p>Escalation for major risk, cost, scope or statutory decisions.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="roadmap">
+  <div class="panel">
+    <h2>Roadmap</h2>
+    <p class="lead">The roadmap provides a practical phased sequence for moving from discovery through to vesting day readiness and post-vesting improvement.</p>
+    <div class="grid-4">
+      <div class="card green"><h3>1. Discover</h3><p>Confirm scope, map services, systems, data, contracts and critical dependencies.</p></div>
+      <div class="card blue"><h3>2. Design</h3><p>Define target operating model views, data, applications, technology and AI governance.</p></div>
+      <div class="card amber"><h3>3. Plan transition</h3><p>Sequence transition architectures, readiness, migration and procurement dependencies.</p></div>
+      <div class="card purple"><h3>4. Govern and improve</h3><p>Assure delivery, track risks and refresh architecture as LGR decisions change.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="risks">
+  <div class="panel">
+    <h2>RAG risks</h2>
+    <p class="lead">The RAG risk view gives SLT a clear view of architecture risks, impact, mitigation and ownership.</p>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>RAG</th><th>Risk</th><th>Impact</th><th>Mitigation</th><th>Owner</th></tr></thead>
+      <tbody>
+        <tr><td><span class="rag red">Red</span></td><td>Architect capacity overload</td><td>Delays, weak assurance and reliance on single individuals.</td><td>Four-domain model, weekly prioritisation and shared cluster working.</td><td>Head of EA</td></tr>
+        <tr><td><span class="rag red">Red</span></td><td>Sensitive people-service data not understood early enough</td><td>Safeguarding, legal and service-continuity risks.</td><td>Prioritise adult care, children’s services, SEND and safeguarding discovery.</td><td>Business and Data Architects</td></tr>
+        <tr><td><span class="rag red">Red</span></td><td>Vesting day minimum capability unclear</td><td>Future authority may not operate reliably from day one.</td><td>Define minimum operating capability for HR, payroll, finance, legal, identity, cyber and statutory services.</td><td>Head of EA and Programme Board</td></tr>
+        <tr><td><span class="rag amber">Amber</span></td><td>County and district services mapped in silos</td><td>Fragmented design and unclear resident journeys.</td><td>Use five service clusters as one architecture model.</td><td>Business Architect</td></tr>
+        <tr><td><span class="rag amber">Amber</span></td><td>Application duplication continues</td><td>Cost, complexity and poor user experience.</td><td>Application-to-service matrix and rationalisation options.</td><td>Application and Digital Architect</td></tr>
+        <tr><td><span class="rag amber">Amber</span></td><td>Informal AI adoption</td><td>Bias, privacy, security and trust risk.</td><td>AI operating model and AI Architecture Board.</td><td>AI Board</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+
+<section class="section" id="strategy">
+  <div class="panel">
+    <h2>Overall strategy</h2>
+    <p class="lead">The Enterprise Architecture Operating Model gives Stevenage a practical, supportive and structured way to manage Local Government Reorganisation. It uses four architecture domains, five service clusters and a distinct AI governance route to reduce risk, create clarity and support better resident outcomes.</p>
+    <div class="grid-4">
+      <div class="card green"><h3>Four architects</h3><p>Business, Data, Application and Digital, and Technology and Security domain leadership.</p></div>
+      <div class="card blue"><h3>Five clusters</h3><p>Customer, People, Place, Corporate and Technology foundations.</p></div>
+      <div class="card purple"><h3>Separate AI model</h3><p>AI governed as a strategic cross-cutting capability.</p></div>
+      <div class="card amber"><h3>TOGAF tailored</h3><p>TOGAF ADM used pragmatically for LGR pace and complexity.</p></div>
+    </div>
+    <h3>Strategic objectives</h3>
+    <div class="table-wrap"><table class="table">
+      <thead><tr><th>Objective</th><th>Description</th><th>Expected value</th></tr></thead>
+      <tbody>
+        <tr><td>1. Establish a supportive four-architect model</td><td>Define clear domain leadership across Business, Data, Application and Digital, and Technology and Security.</td><td>Reduced overload, clearer accountability and better decisions.</td></tr>
+        <tr><td>2. Organise LGR through service clusters</td><td>Use five clusters to structure discovery, design and transition planning.</td><td>Better sequencing from resident front door to enabling foundations.</td></tr>
+        <tr><td>3. Align applications and data</td><td>Map services to systems, data, integrations and transition dependencies.</td><td>Reduced duplication and clearer readiness planning.</td></tr>
+        <tr><td>4. Govern AI separately</td><td>Use AI Architecture Board and risk-tiered approval.</td><td>Responsible innovation with public trust and assurance.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+
+<section class="section" id="appendices">
+  <div class="panel">
+    <h2>Appendices</h2>
+    <p class="lead">The appendices provide the detailed operating material beneath the strategy. They are included directly in this preview so they remain functional even if standalone page links do not open in some preview modes.</p>
+    <div class="appendix-grid">
+      <div class="appendix-card"><h3>Appendix A: EA Operating Model</h3><p>Defines the four-domain architecture team, working rhythm, principles, governance touchpoints and workload management.</p></div>
+      <div class="appendix-card"><h3>Appendix B: Service Cluster Model</h3><p>Defines the five service clusters and maps county and local services into one architecture structure.</p></div>
+      <div class="appendix-card"><h3>Appendix C: Governance Model</h3><p>Defines forums, decision categories, assurance levels, escalation routes and reporting.</p></div>
+      <div class="appendix-card"><h3>Appendix D: ADR Template</h3><p>Provides the structure for recording key architecture decisions, options, impacts, risks and sign-off.</p></div>
+      <div class="appendix-card"><h3>Appendix E: Equality Impact Assessment</h3><p>Ensures digital, data, AI and service changes consider equality, inclusion, access and vulnerable residents.</p></div>
+      <div class="appendix-card"><h3>Appendix F: RAG Risk Register</h3><p>Provides the SLT-facing risk view with rating, mitigation and ownership.</p></div>
+    </div>
+  </div>
+</section>
+
+  <div class="footer">Stevenage Borough Council • Local Government Reorganisation • Enterprise Architecture Go-To Portal • Service coverage baseline requires local validation</div>
+</main>
+</div>
+</body>
+</html>

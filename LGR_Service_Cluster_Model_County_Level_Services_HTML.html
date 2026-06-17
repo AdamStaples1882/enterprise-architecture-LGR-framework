@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LGR Service Cluster Model: County-Level Services</title>
+<style>
+:root{
+  --forest:#003f37; --deep:#062f2a; --emerald:#007f6f; --teal:#0aa195;
+  --mint:#dff3ef; --mint2:#f6fbfa; --navy:#142c44; --blue:#286c99; --sky:#e8f4fb;
+  --purple:#5f4aa0; --lav:#f1eff9; --gold:#b97916; --amber:#fff4df;
+  --coral:#bd5648; --rose:#fff0ee; --red:#b42318; --red-bg:#fff1f0;
+  --green-rag:#14804a; --green-bg:#e9f7ef; --amber-rag:#b7791f; --amber-bg:#fff8e6;
+  --ink:#172824; --muted:#5f716c; --line:#d7e4e0; --bg:#eef4f3; --white:#fff;
+  --shadow:0 24px 70px rgba(7,42,37,.15); --soft:0 14px 36px rgba(7,42,37,.09);
+  --glass:rgba(255,255,255,.82);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 86% 3%, rgba(95,74,160,.18), transparent 30%),
+    radial-gradient(circle at 8% 9%, rgba(0,127,111,.18), transparent 27%),
+    linear-gradient(135deg,#eef4f3 0%,#f8fbfb 48%,#edf5f3 100%);
+  color:var(--ink);
+  font-family:Arial, Helvetica, sans-serif;
+  letter-spacing:-0.01em;
+}
+a{color:var(--forest);font-weight:800;text-decoration:none}
+a:hover{text-decoration:underline}
+.app{display:grid;grid-template-columns:340px minmax(0,1fr);min-height:100vh}
+.sidebar{
+  background:
+    radial-gradient(circle at 20% 0%, rgba(10,161,149,.22), transparent 26%),
+    linear-gradient(180deg,var(--forest),var(--deep));
+  color:#fff;
+  padding:30px 24px;
+  position:sticky;top:0;height:100vh;overflow:auto;
+  border-right:1px solid rgba(255,255,255,.12);
+}
+.logo{padding:0 4px 22px;border-bottom:1px solid rgba(255,255,255,.16)}
+.logo-mark{
+  width:60px;height:60px;border-radius:20px;
+  background:linear-gradient(135deg,#fff,var(--mint));
+  color:var(--forest);display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:21px;margin-bottom:16px;
+  box-shadow:0 12px 28px rgba(0,0,0,.18);
+}
+.logo h1{margin:0 0 8px;font-size:25px;line-height:1.12}
+.logo p{margin:0;color:#d7eee9;font-size:13.5px;line-height:1.45}
+.nav-title{margin:24px 0 11px;text-transform:uppercase;letter-spacing:.11em;font-size:11px;color:#bde4dd;font-weight:800}
+.nav{display:flex;flex-direction:column;gap:8px}
+.nav a{
+  color:#fff;text-decoration:none;padding:12px 13px;border-radius:14px;
+  border:1px solid rgba(255,255,255,.11);
+  background:rgba(255,255,255,.055);
+  font-size:14px;line-height:1.28;
+  transition:all .18s ease;
+}
+.nav a:hover,.nav a.active{
+  background:rgba(255,255,255,.18);
+  border-color:rgba(255,255,255,.26);
+  transform:translateX(2px);
+  text-decoration:none;
+}
+.side-panel{
+  margin-top:26px;background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:17px;
+  backdrop-filter:blur(8px);
+}
+.side-panel strong{display:block;margin-bottom:7px;font-size:14px}
+.side-panel span{display:block;color:#d7eee9;font-size:13px;line-height:1.42}
+.main{padding:34px 38px 56px;max-width:1580px;width:100%}
+.hero{
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.96),rgba(255,255,255,.86)),
+    linear-gradient(135deg,var(--mint),var(--sky));
+  border:1px solid rgba(255,255,255,.95);
+  border-radius:34px;
+  box-shadow:var(--shadow);
+  padding:36px;
+  position:relative;overflow:hidden;margin-bottom:28px;
+}
+.hero:before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(120deg,rgba(255,255,255,.65),transparent 40%);
+  pointer-events:none;
+}
+.hero:after{
+  content:"";position:absolute;right:-110px;top:-130px;width:360px;height:360px;border-radius:50%;
+  background:linear-gradient(135deg,rgba(0,127,111,.19),rgba(95,74,160,.17));
+}
+.eyebrow{
+  display:inline-flex;gap:8px;padding:9px 13px;border-radius:999px;
+  background:rgba(223,243,239,.95);color:var(--forest);font-weight:900;font-size:12.5px;
+  border:1px solid rgba(0,127,111,.20);position:relative;z-index:1;
+  text-transform:uppercase;letter-spacing:.06em;
+}
+.hero h2{
+  position:relative;z-index:1;margin:18px 0 13px;color:var(--forest);
+  font-size:clamp(34px,3.2vw,50px);line-height:1.04;max-width:1160px;
+}
+.hero p{
+  position:relative;z-index:1;margin:0;color:#4b625d;font-size:17px;line-height:1.58;max-width:1160px;
+}
+.section{margin-top:28px}
+.panel{
+  background:var(--glass);border:1px solid rgba(215,228,224,.95);
+  border-radius:30px;box-shadow:var(--soft);padding:30px;
+  backdrop-filter:blur(10px);
+}
+.panel h3{margin:0 0 11px;color:var(--forest);font-size:30px;line-height:1.16}
+.panel h4{margin:20px 0 10px;color:var(--forest);font-size:21px;line-height:1.25}
+.lead{margin:0 0 22px;color:var(--muted);font-size:16.5px;line-height:1.56;max-width:1200px}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.card{
+  border:1px solid var(--line);background:#fff;border-radius:24px;padding:22px;min-width:0;
+  box-shadow:0 8px 22px rgba(7,42,37,.045);
+}
+.card h4{margin:0 0 10px;color:var(--forest);font-size:20px;line-height:1.2}
+.card p{margin:0;color:var(--muted);font-size:15px;line-height:1.5}
+.card ul{margin:0;padding:0 0 0 20px}
+.card li{margin:0 0 8px;font-size:15px;line-height:1.43}
+.green{background:linear-gradient(180deg,#fff,var(--mint));border-color:#b7d8d2}
+.blue{background:linear-gradient(180deg,#fff,var(--sky));border-color:#c4dcea}
+.purple{background:linear-gradient(180deg,#fff,var(--lav));border-color:#d5cdec}
+.amber{background:linear-gradient(180deg,#fff,var(--amber));border-color:#ead5a6}
+.rose{background:linear-gradient(180deg,#fff,var(--rose));border-color:#efc6bf}
+.callout{
+  margin-top:20px;padding:17px 19px;
+  background:linear-gradient(90deg,rgba(223,243,239,.95),rgba(255,255,255,.88));
+  border-left:7px solid var(--emerald);
+  border-radius:20px;color:#3a544f;font-size:15px;line-height:1.5;
+}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:20px;margin-top:15px;background:#fff}
+.table{width:100%;border-collapse:separate;border-spacing:0;min-width:850px;background:#fff}
+.table th,.table td{text-align:left;vertical-align:top;padding:14px 15px;border-bottom:1px solid var(--line);font-size:14.3px;line-height:1.42}
+.table th{background:#f4faf8;color:var(--forest);font-weight:900;text-transform:uppercase;letter-spacing:.035em;font-size:12.5px}
+.table tr:last-child td{border-bottom:none}
+ul{line-height:1.46}
+.rag{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-weight:900;font-size:12px;white-space:nowrap}
+.rag:before{content:"";width:9px;height:9px;border-radius:50%}
+.rag.red{background:var(--red-bg);color:var(--red);border:1px solid #f2b8b5}.rag.red:before{background:var(--red)}
+.rag.amber{background:var(--amber-bg);color:var(--amber-rag);border:1px solid #f3d993}.rag.amber:before{background:var(--amber-rag)}
+.rag.green{background:var(--green-bg);color:var(--green-rag);border:1px solid #a7dfbd}.rag.green:before{background:var(--green-rag)}
+.footer{text-align:center;color:var(--muted);font-size:13px;margin-top:30px}
+@media(max-width:1380px){.app{grid-template-columns:1fr}.sidebar{position:relative;height:auto}.grid-4,.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:920px){.main{padding:20px}.hero{padding:26px}.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}.table{min-width:760px}}
+</style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <h1>LGR Service Cluster Model: Including County-Level Services</h1>
+      <p>Resident-led service architecture for a future unitary authority</p>
+    </header>
+
+    <section class="content">
+      <div class="flow">
+        <div class="flow-text">Service flow: resident need → operational services → enabling services → shared foundations</div>
+        <div class="flow-line" aria-hidden="true"></div>
+      </div>
+
+      <section class="clusters" aria-label="LGR service clusters">
+
+        <article class="cluster">
+          <div class="cluster-header">
+            <div class="number">1</div>
+            <div class="cluster-title">
+              <h2>Customer, Access and Resident Experience</h2>
+              <p class="subtitle">The front door</p>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="section-box">
+            <div class="section-heading">District / Borough services</div>
+            <ul>
+              <li>Customer Services</li>
+              <li>Contact centre</li>
+              <li>Website and forms</li>
+              <li>CRM and portals</li>
+              <li>Complaints and FOI</li>
+              <li>Assisted digital</li>
+            </ul>
+          </div>
+          <div class="section-box county">
+            <div class="section-heading">County-level additions</div>
+            <ul>
+              <li>Adult care first contact</li>
+              <li>Children’s access routes</li>
+              <li>Highways reporting</li>
+              <li>School admissions</li>
+              <li>Blue Badge</li>
+              <li>Registration bookings</li>
+            </ul>
+          </div>
+          <p class="note">Main architectural home: not a rigid boundary.</p>
+        </article>
+
+        <article class="cluster">
+          <div class="cluster-header">
+            <div class="number">2</div>
+            <div class="cluster-title">
+              <h2>Community, Housing and People Services</h2>
+              <p class="subtitle">Support for people</p>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="section-box">
+            <div class="section-heading">District / Borough services</div>
+            <ul>
+              <li>Housing</li>
+              <li>Homelessness</li>
+              <li>Repairs</li>
+              <li>Community safety</li>
+              <li>Anti-social behaviour</li>
+              <li>Wellbeing</li>
+            </ul>
+          </div>
+          <div class="section-box county">
+            <div class="section-heading">County-level additions</div>
+            <ul>
+              <li>Adult social care</li>
+              <li>Children’s social care</li>
+              <li>SEND</li>
+              <li>Public health</li>
+              <li>Libraries</li>
+              <li>Youth services</li>
+            </ul>
+          </div>
+          <p class="note">Main architectural home: not a rigid boundary.</p>
+        </article>
+
+        <article class="cluster">
+          <div class="cluster-header">
+            <div class="number">3</div>
+            <div class="cluster-title">
+              <h2>Place, Environment and Regulatory Services</h2>
+              <p class="subtitle">Services for place</p>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="section-box">
+            <div class="section-heading">District / Borough services</div>
+            <ul>
+              <li>Planning</li>
+              <li>Building control</li>
+              <li>Waste collection</li>
+              <li>Environmental health</li>
+              <li>Licensing</li>
+              <li>Parking</li>
+            </ul>
+          </div>
+          <div class="section-box county">
+            <div class="section-heading">County-level additions</div>
+            <ul>
+              <li>Highways</li>
+              <li>Transport planning</li>
+              <li>Street lighting</li>
+              <li>Waste disposal</li>
+              <li>Flood risk</li>
+              <li>Trading standards</li>
+            </ul>
+          </div>
+          <p class="note">Main architectural home: not a rigid boundary.</p>
+        </article>
+
+        <article class="cluster">
+          <div class="cluster-header">
+            <div class="number">4</div>
+            <div class="cluster-title">
+              <h2>Corporate and Enabling Services</h2>
+              <p class="subtitle">Keeping the authority running</p>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="section-box">
+            <div class="section-heading">District / Borough services</div>
+            <ul>
+              <li>HR</li>
+              <li>Finance</li>
+              <li>Payroll</li>
+              <li>Procurement</li>
+              <li>Legal</li>
+              <li>Democratic Services</li>
+            </ul>
+          </div>
+          <div class="section-box county">
+            <div class="section-heading">County-level additions</div>
+            <ul>
+              <li>County finance</li>
+              <li>County HR and payroll</li>
+              <li>Commissioning</li>
+              <li>Pensions interfaces</li>
+              <li>Audit and insurance</li>
+              <li>Contract management</li>
+            </ul>
+          </div>
+          <p class="note">Main architectural home: not a rigid boundary.</p>
+        </article>
+
+        <article class="cluster">
+          <div class="cluster-header">
+            <div class="number">5</div>
+            <div class="cluster-title">
+              <h2>Technology, Data, AI and Shared Platforms</h2>
+              <p class="subtitle">Shared foundations</p>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="section-box">
+            <div class="section-heading">District / Borough services</div>
+            <ul>
+              <li>Identity</li>
+              <li>Cyber</li>
+              <li>M365</li>
+              <li>ERP</li>
+              <li>Data platform</li>
+              <li>Integration</li>
+            </ul>
+          </div>
+          <div class="section-box county">
+            <div class="section-heading">County-level additions</div>
+            <ul>
+              <li>Care systems</li>
+              <li>Education systems</li>
+              <li>Highways systems</li>
+              <li>GIS platforms</li>
+              <li>Public health data</li>
+              <li>County networks</li>
+            </ul>
+          </div>
+          <p class="note">Main architectural home: not a rigid boundary.</p>
+        </article>
+
+      </section>
+
+      <section class="domains">
+        <h2>Four Enterprise Architecture domains support every service cluster</h2>
+        <div class="domain-grid">
+          <article class="domain-card">
+            <h3>Business Architecture</h3>
+            <p>Operating model, capability map, customer journeys and process design.</p>
+          </article>
+          <article class="domain-card">
+            <h3>Data Architecture</h3>
+            <p>Master data, migration, data quality, reporting and information governance.</p>
+          </article>
+          <article class="domain-card">
+            <h3>Application &amp; Digital Architecture</h3>
+            <p>CRM, ERP, portals, case systems, integration and rationalisation.</p>
+          </article>
+          <article class="domain-card">
+            <h3>Technology &amp; Security Architecture</h3>
+            <p>Cloud, identity, cyber, networks, devices and resilience.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="governance">
+        <h2>Governance and transition spine</h2>
+        <div class="governance-grid">
+          <div class="pill">EA stand-up</div>
+          <div class="pill">Architecture Design Authority</div>
+          <div class="pill">Technical Design Authority</div>
+          <div class="pill">AI Architecture Board</div>
+          <div class="pill">Architecture Roadmap Review</div>
+        </div>
+      </section>
+
+      <section class="thinking">
+        <strong>Thinking and justification:</strong> the model keeps the resident front door first, absorbs county services into the same five clusters, and avoids separate county/district silos. Each cluster receives input from all four architects, creating a supportive and manageable EA environment.
+      </section>
+    </section>
+  </main>
+</body>
+</html>

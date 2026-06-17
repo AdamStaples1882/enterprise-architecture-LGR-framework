@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Appendix C: Architecture Governance Model</title>
+<style>
+:root{
+  --forest:#003f37; --deep:#062f2a; --emerald:#007f6f; --teal:#0aa195;
+  --mint:#dff3ef; --mint2:#f6fbfa; --navy:#142c44; --blue:#286c99; --sky:#e8f4fb;
+  --purple:#5f4aa0; --lav:#f1eff9; --gold:#b97916; --amber:#fff4df;
+  --coral:#bd5648; --rose:#fff0ee; --red:#b42318; --red-bg:#fff1f0;
+  --green-rag:#14804a; --green-bg:#e9f7ef; --amber-rag:#b7791f; --amber-bg:#fff8e6;
+  --ink:#172824; --muted:#5f716c; --line:#d7e4e0; --bg:#eef4f3; --white:#fff;
+  --shadow:0 24px 70px rgba(7,42,37,.15); --soft:0 14px 36px rgba(7,42,37,.09);
+  --glass:rgba(255,255,255,.82);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 86% 3%, rgba(95,74,160,.18), transparent 30%),
+    radial-gradient(circle at 8% 9%, rgba(0,127,111,.18), transparent 27%),
+    linear-gradient(135deg,#eef4f3 0%,#f8fbfb 48%,#edf5f3 100%);
+  color:var(--ink);
+  font-family:Arial, Helvetica, sans-serif;
+  letter-spacing:-0.01em;
+}
+a{color:var(--forest);font-weight:800;text-decoration:none}
+a:hover{text-decoration:underline}
+.app{display:grid;grid-template-columns:340px minmax(0,1fr);min-height:100vh}
+.sidebar{
+  background:
+    radial-gradient(circle at 20% 0%, rgba(10,161,149,.22), transparent 26%),
+    linear-gradient(180deg,var(--forest),var(--deep));
+  color:#fff;
+  padding:30px 24px;
+  position:sticky;top:0;height:100vh;overflow:auto;
+  border-right:1px solid rgba(255,255,255,.12);
+}
+.logo{padding:0 4px 22px;border-bottom:1px solid rgba(255,255,255,.16)}
+.logo-mark{
+  width:60px;height:60px;border-radius:20px;
+  background:linear-gradient(135deg,#fff,var(--mint));
+  color:var(--forest);display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:21px;margin-bottom:16px;
+  box-shadow:0 12px 28px rgba(0,0,0,.18);
+}
+.logo h1{margin:0 0 8px;font-size:25px;line-height:1.12}
+.logo p{margin:0;color:#d7eee9;font-size:13.5px;line-height:1.45}
+.nav-title{margin:24px 0 11px;text-transform:uppercase;letter-spacing:.11em;font-size:11px;color:#bde4dd;font-weight:800}
+.nav{display:flex;flex-direction:column;gap:8px}
+.nav a{
+  color:#fff;text-decoration:none;padding:12px 13px;border-radius:14px;
+  border:1px solid rgba(255,255,255,.11);
+  background:rgba(255,255,255,.055);
+  font-size:14px;line-height:1.28;
+  transition:all .18s ease;
+}
+.nav a:hover,.nav a.active{
+  background:rgba(255,255,255,.18);
+  border-color:rgba(255,255,255,.26);
+  transform:translateX(2px);
+  text-decoration:none;
+}
+.side-panel{
+  margin-top:26px;background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:17px;
+  backdrop-filter:blur(8px);
+}
+.side-panel strong{display:block;margin-bottom:7px;font-size:14px}
+.side-panel span{display:block;color:#d7eee9;font-size:13px;line-height:1.42}
+.main{padding:34px 38px 56px;max-width:1580px;width:100%}
+.hero{
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.96),rgba(255,255,255,.86)),
+    linear-gradient(135deg,var(--mint),var(--sky));
+  border:1px solid rgba(255,255,255,.95);
+  border-radius:34px;
+  box-shadow:var(--shadow);
+  padding:36px;
+  position:relative;overflow:hidden;margin-bottom:28px;
+}
+.hero:before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(120deg,rgba(255,255,255,.65),transparent 40%);
+  pointer-events:none;
+}
+.hero:after{
+  content:"";position:absolute;right:-110px;top:-130px;width:360px;height:360px;border-radius:50%;
+  background:linear-gradient(135deg,rgba(0,127,111,.19),rgba(95,74,160,.17));
+}
+.eyebrow{
+  display:inline-flex;gap:8px;padding:9px 13px;border-radius:999px;
+  background:rgba(223,243,239,.95);color:var(--forest);font-weight:900;font-size:12.5px;
+  border:1px solid rgba(0,127,111,.20);position:relative;z-index:1;
+  text-transform:uppercase;letter-spacing:.06em;
+}
+.hero h2{
+  position:relative;z-index:1;margin:18px 0 13px;color:var(--forest);
+  font-size:clamp(34px,3.2vw,50px);line-height:1.04;max-width:1160px;
+}
+.hero p{
+  position:relative;z-index:1;margin:0;color:#4b625d;font-size:17px;line-height:1.58;max-width:1160px;
+}
+.section{margin-top:28px}
+.panel{
+  background:var(--glass);border:1px solid rgba(215,228,224,.95);
+  border-radius:30px;box-shadow:var(--soft);padding:30px;
+  backdrop-filter:blur(10px);
+}
+.panel h3{margin:0 0 11px;color:var(--forest);font-size:30px;line-height:1.16}
+.panel h4{margin:20px 0 10px;color:var(--forest);font-size:21px;line-height:1.25}
+.lead{margin:0 0 22px;color:var(--muted);font-size:16.5px;line-height:1.56;max-width:1200px}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.card{
+  border:1px solid var(--line);background:#fff;border-radius:24px;padding:22px;min-width:0;
+  box-shadow:0 8px 22px rgba(7,42,37,.045);
+}
+.card h4{margin:0 0 10px;color:var(--forest);font-size:20px;line-height:1.2}
+.card p{margin:0;color:var(--muted);font-size:15px;line-height:1.5}
+.card ul{margin:0;padding:0 0 0 20px}
+.card li{margin:0 0 8px;font-size:15px;line-height:1.43}
+.green{background:linear-gradient(180deg,#fff,var(--mint));border-color:#b7d8d2}
+.blue{background:linear-gradient(180deg,#fff,var(--sky));border-color:#c4dcea}
+.purple{background:linear-gradient(180deg,#fff,var(--lav));border-color:#d5cdec}
+.amber{background:linear-gradient(180deg,#fff,var(--amber));border-color:#ead5a6}
+.rose{background:linear-gradient(180deg,#fff,var(--rose));border-color:#efc6bf}
+.callout{
+  margin-top:20px;padding:17px 19px;
+  background:linear-gradient(90deg,rgba(223,243,239,.95),rgba(255,255,255,.88));
+  border-left:7px solid var(--emerald);
+  border-radius:20px;color:#3a544f;font-size:15px;line-height:1.5;
+}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:20px;margin-top:15px;background:#fff}
+.table{width:100%;border-collapse:separate;border-spacing:0;min-width:850px;background:#fff}
+.table th,.table td{text-align:left;vertical-align:top;padding:14px 15px;border-bottom:1px solid var(--line);font-size:14.3px;line-height:1.42}
+.table th{background:#f4faf8;color:var(--forest);font-weight:900;text-transform:uppercase;letter-spacing:.035em;font-size:12.5px}
+.table tr:last-child td{border-bottom:none}
+ul{line-height:1.46}
+.rag{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-weight:900;font-size:12px;white-space:nowrap}
+.rag:before{content:"";width:9px;height:9px;border-radius:50%}
+.rag.red{background:var(--red-bg);color:var(--red);border:1px solid #f2b8b5}.rag.red:before{background:var(--red)}
+.rag.amber{background:var(--amber-bg);color:var(--amber-rag);border:1px solid #f3d993}.rag.amber:before{background:var(--amber-rag)}
+.rag.green{background:var(--green-bg);color:var(--green-rag);border:1px solid #a7dfbd}.rag.green:before{background:var(--green-rag)}
+.footer{text-align:center;color:var(--muted);font-size:13px;margin-top:30px}
+@media(max-width:1380px){.app{grid-template-columns:1fr}.sidebar{position:relative;height:auto}.grid-4,.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:920px){.main{padding:20px}.hero{padding:26px}.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}.table{min-width:760px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="logo">
+    <div class="logo-mark">EA</div>
+    <h1>SBC LGR EA Go-To Portal</h1>
+    <p>Strategy and appendices as readable site pages, not separate downloads.</p>
+  </div>
+  
+<div class="nav-title">Portal</div>
+<nav class="nav">
+  <a href="index.html">Dashboard</a>
+  <a href="strategy.html">Overall Strategy</a>
+</nav>
+<div class="nav-title">Appendices</div>
+<nav class="nav">
+  <a href="appendix-a.html">Appendix A: EA Operating Model</a>
+  <a href="appendix-b.html">Appendix B: Service Clusters</a>
+  <a href="appendix-c.html" class="active">Appendix C: Governance</a>
+  <a href="appendix-d.html">Appendix D: ADR Template</a>
+  <a href="appendix-e.html">Appendix E: Equality Impact</a>
+  <a href="appendix-f.html">Appendix F: RAG Risk Register</a>
+</nav>
+
+  <div class="side-panel"><strong>Site structure</strong><span>The strategy and appendices are now first-class pages within the portal.</span></div>
+</aside>
+<main class="main">
+  <section class="hero"><span class="eyebrow">Stevenage • LGR • Enterprise Architecture</span><h2>Appendix C: Architecture Governance Model</h2><p>Architecture assurance, forums, decision routes and escalation for LGR.</p></section>
+  
+<section class="section"><div class="panel">
+<h3>Purpose</h3>
+<p class="lead">Appendix C defines the governance model that provides assurance, decision clarity and escalation routes for LGR architecture decisions.</p>
+</div></section>
+<section class="section"><div class="panel">
+<h3>Governance Forums</h3>
+<div class="grid-3">
+<div class="card green"><h4>EA Stand-up</h4><p>Weekly workload, priorities, blockers and support.</p></div>
+<div class="card blue"><h4>Architecture Design Authority</h4><p>Cross-domain design assurance and Architecture Decision Records.</p></div>
+<div class="card purple"><h4>Technical Design Authority</h4><p>Technical, cyber, cloud, infrastructure and resilience assurance.</p></div>
+<div class="card amber"><h4>AI Architecture Board</h4><p>AI proposal review, conditions, pilots and monitoring.</p></div>
+<div class="card rose"><h4>Roadmap Review</h4><p>Transition states, readiness, dependencies and exceptions.</p></div>
+<div class="card"><h4>LGR Programme Board</h4><p>Escalation for major risk, cost, scope, statutory or political decisions.</p></div>
+</div>
+</div></section>
+<section class="section"><div class="panel">
+<h3>Decision Flow</h3>
+<ol>
+<li>Proposal or project identifies architecture impact.</li>
+<li>EA triage determines assurance route.</li>
+<li>Relevant architects assess business, data, application, technology and AI implications.</li>
+<li>Design is reviewed by the appropriate forum.</li>
+<li>Decision is recorded through an ADR.</li>
+<li>Conditions, risks and dependencies are tracked.</li>
+<li>Escalations move to LGR Programme Board where required.</li>
+</ol>
+<div class="callout"><strong>TOGAF alignment:</strong> Appendix C mainly supports Phase G Implementation Governance and Phase H Architecture Change Management.</div>
+</div></section>
+
+  <div class="footer">Stevenage Borough Council • Local Government Reorganisation • Enterprise Architecture Go-To Portal</div>
+</main>
+</div>
+</body>
+</html>
