@@ -363,13 +363,58 @@ a:hover{color:#1d4ed8;text-decoration:underline}
 
 <section class="section" id="walkthrough">
   <div class="panel">
-    <h2>Guided walkthrough</h2>
-    <p class="lead">The walkthrough explains the model in the order senior leaders need to understand it: why it exists, what services are in scope, how the work is organised, what architects are accountable for, how TOGAF connects the method, why AI is separate, how governance works, and how risks are managed.</p>
-    <div class="walkthrough-grid">
-      <div class="walk-card"><strong>1</strong><h3>Understand why</h3><p>Start with the reason for the model and the need for a supportive architecture environment.</p></div>
-      <div class="walk-card"><strong>2</strong><h3>Understand the scope</h3><p>Review the county and local service lists so LGR scope is explicit.</p></div>
-      <div class="walk-card"><strong>3</strong><h3>Understand accountability</h3><p>See what each Enterprise Architect is accountable for and why it matters.</p></div>
-      <div class="walk-card"><strong>4</strong><h3>Use the appendices</h3><p>Use the strategy and appendices at the bottom as detailed reference material.</p></div>
+    <h2>Guided Walkthrough: How to Use This Portal</h2>
+    <p class="lead">This portal is designed to be accessible to everyone involved in Hertfordshire Local Government Reorganisation planning. The walkthrough sequence below explains the model in the order that senior leaders, service owners, and architects need to understand it.</p>
+    
+    <h3>Suggested Walkthrough Sequence</h3>
+    <div class="walkthrough-grid" style="grid-template-columns: repeat(2, 1fr); gap: 15px;">
+      <div class="walk-card"><strong>1.</strong> <h3>Overview dashboard</h3><p>Start here for the executive entry point.</p></div>
+      <div class="walk-card"><strong>2.</strong> <h3>Why the model exists</h3><p>Understand the need for a supportive architecture environment.</p></div>
+      <div class="walk-card"><strong>3.</strong> <h3>Service lists</h3><p>Review county and local services so LGR scope is explicit.</p></div>
+      <div class="walk-card"><strong>4.</strong> <h3>Organisation</h3><p>Understand how LGR work is grouped into clusters.</p></div>
+      <div class="walk-card"><strong>5.</strong> <h3>Accountabilities</h3><p>Review Architect focus and responsibilities.</p></div>
+      <div class="walk-card"><strong>6.</strong> <h3>TOGAF linkage</h3><p>Check how our method maps to industry standards.</p></div>
+      <div class="walk-card"><strong>7.</strong> <h3>AI operating model</h3><p>Review the cross-cutting governance for AI.</p></div>
+      <div class="walk-card"><strong>8.</strong> <h3>Governance</h3><p>Understand how decisions are assured.</p></div>
+      <div class="walk-card"><strong>9.</strong> <h3>Roadmap</h3><p>Review the timeline for transition and vesting day.</p></div>
+      <div class="walk-card"><strong>10.</strong> <h3>RAG risks</h3><p>Review the immediate threats to LGR delivery.</p></div>
+    </div>
+
+    <div style="margin-top: 24px;">
+      <h3>How Different Roles Should Use the Portal</h3>
+      <div class="grid-2">
+        <div class="card green">
+          <h4>Non-Architects & Senior Leaders</h4>
+          <p>Use the portal to understand dependencies and the reasoning behind technical constraints. You do not need to read every appendix; focus on the Dashboard, Risks, and Governance sections.</p>
+        </div>
+        <div class="card blue">
+          <h4>Service Owners</h4>
+          <p>Validate the content. Check the county and local service lists and the LGAM Service Clusters. If your service is missing or mapped incorrectly, raise a correction.</p>
+        </div>
+        <div class="card purple">
+          <h4>Architects</h4>
+          <p>Use this model to identify cross-domain dependencies, document technical risks, and draft Architecture Decision Records (ADRs) when facing legacy system conflicts.</p>
+        </div>
+        <div class="card amber">
+          <h4>Programme Boards</h4>
+          <p>Use the portal for assurance. Ensure that transition funding requests map back to the documented target architecture and approved ADRs.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 24px;">
+      <strong>Feedback Route:</strong> If you spot a missing service, an incorrect dependency, or need to log a formal technical decision, you should immediately raise an <strong>Architecture Decision Record (ADR)</strong> via the Architecture Design Authority (ADA) or contact the Head of Enterprise Architecture.
+    </div>
+
+    <div class="callout" style="border-left-color: var(--blue);">
+      <strong>Thinking and justification:</strong> 
+      <ul>
+        <li><strong>Why a guided walkthrough is needed:</strong> LGR architecture is inherently complex. A structured path prevents users from feeling overwhelmed and abandoning the documentation.</li>
+        <li><strong>Usability and engagement:</strong> By chunking the information logically, we align with the <a href="https://www.gov.uk/service-manual" target="_blank">GOV.UK Service Manual</a> and <a href="https://www.gov.uk/service-manual/service-standard" target="_blank">GDS Service Standard</a> principles for content design, ensuring high engagement.</li>
+        <li><strong>Preventing architect-only usage:</strong> Breaking down the content role-by-role ensures the portal serves the business, preventing it from becoming a purely technical echo chamber.</li>
+        <li><strong>TOGAF alignment:</strong> The walkthrough explicitly supports the <a href="https://www.opengroup.org/togaf" target="_blank">TOGAF Standard</a> Phase A (Stakeholder Engagement) and Requirements Management by tailoring communication to specific audiences.</li>
+      </ul>
+      <em>Additional reference: <a href="https://architecture.cddo.cabinetoffice.gov.uk/gds-local/" target="_blank">Local Government Architecture Model</a></em>
     </div>
   </div>
 </section>
