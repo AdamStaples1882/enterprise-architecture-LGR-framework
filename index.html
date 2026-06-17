@@ -496,107 +496,114 @@ a:hover{color:#1d4ed8;text-decoration:underline}
 
 <section class="section" id="service-lists">
   <div class="panel">
-    <h2>County and local government service lists</h2>
-    <p class="lead">This section makes the service coverage explicit. It is designed as a practical discovery baseline for LGR, bringing together the national county and district split, Hertfordshire County Council service categories and Stevenage Borough Council service areas.</p>
+    <h2>County and Local Government Service Lists</h2>
+    <p class="lead">To safely execute Local Government Reorganisation, we must first map exactly what we do today. This section establishes the baseline inventory of all county-level services, district/borough services, and shared or partner services across Hertfordshire.</p>
+    
+    <p>We require explicit service lists <em>before</em> we begin any service design, procurement, or system rationalisation. These lists act as the anchor for all subsequent architecture mapping. They directly support:</p>
+    <ul>
+      <li><strong>Capability Mapping:</strong> Identifying which legacy systems support which business functions.</li>
+      <li><strong>Day 1 Statutory Continuity:</strong> Ensuring no mandatory public service falls offline during transition.</li>
+      <li><strong>Discovery:</strong> Accelerating the discovery of applications, data silos, workforce dependencies, and legacy contracts.</li>
+    </ul>
 
-    <div class="validation-banner">
-      <strong>Validation caveat:</strong> this is a comprehensive architecture baseline, not a final legally binding service inventory. It must be validated with Hertfordshire County Council, Stevenage Borough Council service owners, statutory officers, finance, HR, legal, information governance, the LGR programme and any successor authority design work. Service names, responsibilities, statutory duties, contracts, systems and data ownership should be confirmed through formal discovery.
+    <div class="callout">
+      <strong>Important Context:</strong> During LGR, it is common to discover that <em>service ownership</em>, <em>data ownership</em>, and <em>system ownership</em> differ. For example, a county service owner may rely on a district-owned housing system holding resident data governed by a shared Information Governance lead. <strong>Service owners must validate these lists</strong> to expose these hidden dependencies.
     </div>
 
-    <div style="height:18px"></div>
-    <div class="service-coverage-grid">
-      <div class="coverage-card">
-        <h3>County-scale services and capabilities to include</h3>
-        <p class="subtitle">Strategic and county-wide responsibilities that need to be reflected in LGR discovery, architecture and transition planning.</p>
-        <ul class="service-columns">
-          <li>Adult social care</li>
-          <li>Care assessments and support planning</li>
-          <li>Safeguarding adults</li>
-          <li>Equipment, adaptations, homecare and care options</li>
-          <li>Carers support</li>
-          <li>Dementia, autism and mental health support interfaces</li>
-          <li>Blue Badge and mobility-related support</li>
-          <li>Day services and community support</li>
-          <li>Children’s social care</li>
-          <li>Children’s safeguarding front door</li>
-          <li>Children in care and care leavers</li>
-          <li>Fostering and adoption interfaces</li>
-          <li>Early help and family support</li>
-          <li>Schools and education</li>
-          <li>School admissions</li>
-          <li>SEND services and education support</li>
-          <li>Early years and childcare support</li>
-          <li>Free school meals and school support routes</li>
-          <li>Home to school transport</li>
-          <li>Public health</li>
-          <li>Libraries and archives</li>
-          <li>Registration services, births, deaths, marriages and citizenship</li>
-          <li>Highways, roads and pavements</li>
-          <li>Traffic management and road safety</li>
-          <li>Street lighting</li>
-          <li>Rights of way</li>
-          <li>Transport planning and public transport coordination</li>
-          <li>Waste disposal and household recycling centres</li>
-          <li>Recycling, waste, environment and planning at county scale</li>
-          <li>Flood risk management</li>
-          <li>Minerals and waste planning</li>
-          <li>Business and trading standards</li>
-          <li>Consumer protection and business advice</li>
-          <li>Fire and rescue</li>
-          <li>Community protection and emergency planning</li>
-          <li>County-scale commissioning and contract management</li>
-          <li>County-scale finance, HR, legal, democratic and corporate resources</li>
-          <li>County data, GIS, identity, cyber and shared platforms</li>
-        </ul>
-      </div>
-
-      <div class="coverage-card">
-        <h3>District, borough and local services and capabilities to include</h3>
-        <p class="subtitle">Localised responsibilities and operational services that need to be aligned with county services under LGR.</p>
-        <ul class="service-columns">
-          <li>Customer Services and contact centre</li>
-          <li>Reception, face-to-face access and assisted digital</li>
-          <li>Website, online forms and digital content</li>
-          <li>CRM, resident portals and self-service</li>
-          <li>Complaints, FOI and information request routes</li>
-          <li>Resident communications and consultations</li>
-          <li>Council Tax and revenues</li>
-          <li>Benefits administration</li>
-          <li>Housing strategy</li>
-          <li>Housing options and homelessness</li>
-          <li>Temporary accommodation</li>
-          <li>Tenancy management</li>
-          <li>Council housing repairs and compliance</li>
-          <li>Garages and housing estates</li>
-          <li>Community safety and anti-social behaviour</li>
-          <li>Safety and wellbeing services</li>
-          <li>Planning applications</li>
-          <li>Planning policy and local plan interfaces</li>
-          <li>Planning enforcement</li>
-          <li>Building control</li>
-          <li>Land charges and property information</li>
-          <li>Waste collection</li>
-          <li>Recycling collection</li>
-          <li>Missed bin and bulky waste services</li>
-          <li>Street cleansing</li>
-          <li>Environmental health</li>
-          <li>Food safety, noise, pollution and pest control</li>
-          <li>Licensing and registration at district level</li>
-          <li>Parking, car parks and civil enforcement</li>
-          <li>Parks, open spaces and play areas</li>
-          <li>Allotments, cemeteries and crematoria</li>
-          <li>Regeneration, economic development and town centre management</li>
-          <li>Business and commercial services</li>
-          <li>Local land, property, estates and facilities</li>
-          <li>Democratic Services and member support</li>
-          <li>Elections and electoral registration</li>
-          <li>HR, payroll, finance, procurement, legal, audit, risk and PMO</li>
-          <li>Local data, applications, devices, cyber and technology support</li>
-        </ul>
-      </div>
+    <h3>Service Mapping Table (Discovery Baseline)</h3>
+    <div class="table-wrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Service Area</th>
+            <th>Current Authority Type</th>
+            <th>Current Service Owner</th>
+            <th>Statutory / Operational Duty</th>
+            <th>Key Resident Journey</th>
+            <th>Key Applications</th>
+            <th>Key Data</th>
+            <th>Key Suppliers</th>
+            <th>LGR Dependency</th>
+            <th>Day 1 Risk</th>
+            <th>Validation Owner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Adult Social Care</td>
+            <td>County</td>
+            <td>Director of Adult Services</td>
+            <td>Care Act 2014</td>
+            <td>Care assessment to provision</td>
+            <td>Liquidlogic / Mosaic</td>
+            <td>Special Category Care Records</td>
+            <td>System C</td>
+            <td>Requires integration with district housing/benefits.</td>
+            <td><span class="rag red">High</span> Loss of safeguarding data.</td>
+            <td>Head of ASC</td>
+          </tr>
+          <tr>
+            <td>Housing Options</td>
+            <td>District / Borough</td>
+            <td>Head of Housing</td>
+            <td>Housing Act 1996</td>
+            <td>Homelessness presentation to allocation</td>
+            <td>NEC / Civica</td>
+            <td>Tenancy & Vulnerability Data</td>
+            <td>NEC Software Solutions</td>
+            <td>Will merge into unitary housing function.</td>
+            <td><span class="rag amber">Med</span> Disrupted temporary accommodation.</td>
+            <td>Director of Housing</td>
+          </tr>
+          <tr>
+            <td>Waste Collection</td>
+            <td>District / Borough</td>
+            <td>Head of Environment</td>
+            <td>Environmental Protection Act 1990</td>
+            <td>Missed bin reporting to resolution</td>
+            <td>Bartec / Whitespace</td>
+            <td>UPRN / Address</td>
+            <td>Bartec Auto ID</td>
+            <td>Must align with county waste disposal contracts.</td>
+            <td><span class="rag green">Low</span> Operational disruption.</td>
+            <td>Head of Operations</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <p class="source-note"><strong>Source basis:</strong> national county/district responsibilities, Hertfordshire County Council published service categories, and Stevenage Borough Council published service access categories. These must be validated locally before being used as a formal transition inventory.</p>
+    <div class="callout" style="margin-top: 24px;">
+      <strong>Validation Questions for Service Owners:</strong>
+      <ol>
+        <li>Does this list accurately reflect your statutory and non-statutory responsibilities?</li>
+        <li>Have we correctly identified your critical line-of-business applications?</li>
+        <li>Who ultimately owns the data generated by your service, and where is it hosted?</li>
+        <li>Are there any shadow IT systems or local spreadsheets critical to Day 1 operations?</li>
+      </ol>
+    </div>
+
+    <div class="callout" style="margin-top: 24px;">
+      <strong>Suggested ArchiMate Viewpoint: Service & Capability Mapping</strong><br>
+      <em>Purpose:</em> To visualise the relationship between a statutory service and the underlying architecture.<br>
+      <em>Elements:</em> Business Service, Business Capability, Business Role (Service Owner), Application Component, Data Object.<br>
+      <em>Use Case:</em> Used by the Business Architect to verify that all statutory duties (Business Services) are supported by robust technical capabilities (Application Components) across the new unitary boundary.
+    </div>
+
+    <div class="callout" style="border-left-color: var(--blue); margin-top: 24px;">
+      <strong>Thinking and justification:</strong> 
+      <ul>
+        <li><strong>Why service lists are foundational:</strong> You cannot rationalise what you cannot see. A validated list prevents "orphan applications" from being left behind or shut down prematurely.</li>
+        <li><strong>Why county and district services cannot be designed in isolation:</strong> The resident does not care about local government tiers. A seamless resident journey often crosses district (e.g., housing) and county (e.g., social care) lines.</li>
+        <li><strong>TOGAF alignment:</strong> Service lists are the raw material for <a href="https://www.opengroup.org/togaf" target="_blank">TOGAF Standard</a> Phase B (Business Architecture). They directly inform Phase C (Data and Application Architecture) by defining exactly what needs to be supported.</li>
+        <li><strong>Risk reduction:</strong> Validated lists drastically reduce the risk of missing a critical statutory service during the handover to the new authority.</li>
+      </ul>
+      <em>Legal and policy context: 
+        <a href="https://www.legislation.gov.uk/ukpga/1972/70/contents" target="_blank">Local Government Act 1972</a> |
+        <a href="https://www.legislation.gov.uk/ukpga/2007/28/contents" target="_blank">LGA 2007</a> |
+        <a href="https://www.gov.uk/government/collections/hertfordshire-local-government-reorganisation" target="_blank">Herts LGR Collection</a> |
+        <a href="https://architecture.cddo.cabinetoffice.gov.uk/gds-local/" target="_blank">LGAM</a>
+      </em>
+    </div>
   </div>
 </section>
 
@@ -604,311 +611,130 @@ a:hover{color:#1d4ed8;text-decoration:underline}
 
 <section class="section" id="clusters">
   <div class="panel">
-    <h2>How the LGR work is organised</h2>
-    <p class="lead">The clusters now show the services and capabilities inside each section. The purpose is to make the scope visible for SLT, programme teams and architects, while still keeping the model simple enough to use as a walkthrough.</p>
+    <h2>How the LGR Work is Organised</h2>
+    <p class="lead">Hertfordshire Local Government Reorganisation cannot be delivered through a single monolithic plan. Instead, architecture work is structured around five focused <strong>Service Clusters</strong> and four cross-cutting <strong>Architecture Domains</strong>, fully integrated with LGR programme delivery.</p>
 
-    <div class="cluster-detail-grid">
+    <p>This structure ensures that business, data, application, technology, cyber, and AI workstreams do not operate in silos. Architects are embedded in delivery, actively driving <em>Discovery</em>, mapping <em>Design</em> dependencies, sequencing <em>Transition</em>, and providing continuous <em>Assurance</em>.</p>
 
-      <article class="cluster-detail">
-        <div class="cluster-detail-header">
-          <div class="num">1</div>
-          <div>
-            <h3>Customer, Access and Resident Experience</h3>
-            <p>The single front door for residents, businesses, members and partners. This cluster is about access, triage, status, communication and safe handoff into specialist services.</p>
-          </div>
-        </div>
-        <div class="cluster-service-grid">
-          <div class="cluster-service-box">
-            <h4>Local services in scope</h4>
-            <ul>
-              <li>Customer Services</li>
-              <li>Contact centre</li>
-              <li>Reception and face-to-face access</li>
-              <li>Website, online forms and digital content</li>
-              <li>CRM, portals and self-service</li>
-              <li>Complaints, compliments and feedback</li>
-              <li>FOI, EIR and subject access request routes</li>
-              <li>Assisted digital and accessibility support</li>
-              <li>Resident communications and consultations</li>
-            </ul>
-          </div>
-          <div class="cluster-service-box">
-            <h4>County services in scope</h4>
-            <ul>
-              <li>Adult social care first contact</li>
-              <li>Children’s services access routes</li>
-              <li>SEND enquiries and advice routes</li>
-              <li>School admissions enquiries</li>
-              <li>Home to school transport enquiries</li>
-              <li>Highways and street fault reporting</li>
-              <li>Blue Badge enquiries and applications</li>
-              <li>Library enquiries and digital access support</li>
-              <li>Registration appointments</li>
-              <li>Public health information and campaigns</li>
-              <li>Transport and travel enquiries</li>
-            </ul>
-          </div>
-          <div class="cluster-service-box">
-            <h4>Capabilities to design</h4>
-            <ul>
-              <li>Single Customer Record</li>
-              <li>Service catalogue and knowledge base</li>
-              <li>Channel strategy and triage rules</li>
-              <li>Safeguarding and urgent-risk handoff</li>
-              <li>Case status and notifications</li>
-              <li>Accessibility, translation and reasonable adjustments</li>
-              <li>CRM-to-specialist-system routing</li>
-              <li>Contact demand analytics</li>
-            </ul>
-          </div>
-        </div>
-      </article>
+    <h3>How We Work Together</h3>
+    <div class="grid-3" style="margin-bottom: 24px;">
+      <div class="card blue">
+        <h4>Service Owners</h4>
+        <p>Define the business need, validate service lists, and identify statutory risks within their clusters.</p>
+      </div>
+      <div class="card purple">
+        <h4>Enterprise Architects</h4>
+        <p>Map dependencies across clusters, identify legacy conflicts, and draft Architecture Decision Records (ADRs).</p>
+      </div>
+      <div class="card amber">
+        <h4>Programme Leads</h4>
+        <p>Use the architecture roadmap and ADRs to sequence funding, procurement, and migration activities.</p>
+      </div>
+    </div>
 
-      <article class="cluster-detail">
-        <div class="cluster-detail-header">
-          <div class="num">2</div>
-          <div>
-            <h3>Community, Housing and People Services</h3>
-            <p>People-focused services, households, families, housing, care, community wellbeing and support for vulnerable residents.</p>
-          </div>
-        </div>
-        <div class="cluster-service-grid">
-          <div class="cluster-service-box">
-            <h4>Local services in scope</h4>
-            <ul>
-              <li>Housing strategy and housing options</li>
-              <li>Homelessness and temporary accommodation</li>
-              <li>Tenancy management</li>
-              <li>Housing repairs, compliance and planned works</li>
-              <li>Garages and housing estates</li>
-              <li>Community safety</li>
-              <li>Anti-social behaviour</li>
-              <li>Safety and wellbeing</li>
-              <li>Community development and voluntary sector links</li>
-              <li>Leisure, culture and wellbeing partnerships</li>
-              <li>Local health partnerships</li>
-            </ul>
-          </div>
-          <div class="cluster-service-box">
-            <h4>County services in scope</h4>
-            <ul>
-              <li>Adult social care</li>
-              <li>Adult safeguarding</li>
-              <li>Care assessments and support planning</li>
-              <li>Equipment, homecare and care options</li>
-              <li>Carers support</li>
-              <li>Dementia, autism and mental health interfaces</li>
-              <li>Children’s social care</li>
-              <li>Children’s safeguarding</li>
-              <li>Children in care and care leavers</li>
-              <li>Early help and family support</li>
-              <li>Fostering and adoption interfaces</li>
-              <li>SEND and education support</li>
-              <li>Early years and childcare support</li>
-              <li>Public health and prevention</li>
-              <li>Libraries, archives and community learning</li>
-              <li>Youth services</li>
-            </ul>
-          </div>
-          <div class="cluster-service-box">
-            <h4>Capabilities to design</h4>
-            <ul>
-              <li>Complex needs triage</li>
-              <li>Multi-agency case management</li>
-              <li>Safeguarding escalation</li>
-              <li>Resident, household and family data</li>
-              <li>Highly sensitive data controls</li>
-              <li>Care and housing system interfaces</li>
-              <li>Community prevention and early intervention</li>
-              <li>Equality, vulnerability and digital inclusion insight</li>
-              <li>Professional workflow and audit</li>
-            </ul>
-          </div>
-        </div>
-      </article>
+    <h3>Work Organisation and Governance Table</h3>
+    <div class="table-wrap">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Workstream / Cluster</th>
+            <th>Purpose</th>
+            <th>Lead Owner</th>
+            <th>Supporting Architects</th>
+            <th>Key Deliverables</th>
+            <th>Governance Forum</th>
+            <th>Decision Points</th>
+            <th>Dependencies</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Customer & Resident Experience</strong></td>
+            <td>Protect the front-door resident journey.</td>
+            <td>Head of Customer Services</td>
+            <td>Business & Digital Architects</td>
+            <td>Channel Strategy, Single Customer Record</td>
+            <td>ADA</td>
+            <td>CRM consolidation approach.</td>
+            <td>Relies on Identity Management (Tech Cluster).</td>
+          </tr>
+          <tr>
+            <td><strong>2. People & Care Services</strong></td>
+            <td>Merge adult and children’s social care with housing.</td>
+            <td>Directors of Care / Housing</td>
+            <td>Data & Business Architects</td>
+            <td>Vulnerability Data Model</td>
+            <td>ADA / Info Gov</td>
+            <td>Data sharing agreements across tiers.</td>
+            <td>Relies on Corporate Finance for funding flows.</td>
+          </tr>
+          <tr>
+            <td><strong>3. Place & Environment</strong></td>
+            <td>Align planning, waste, highways, and regulation.</td>
+            <td>Director of Environment</td>
+            <td>Digital & Tech Architects</td>
+            <td>GIS Consolidation Plan</td>
+            <td>TDA</td>
+            <td>Field-worker device strategy.</td>
+            <td>Relies on county/district waste contracts.</td>
+          </tr>
+          <tr>
+            <td><strong>4. Corporate & Enabling</strong></td>
+            <td>Establish Day 1 HR, Finance, and Legal capability.</td>
+            <td>Director of Resources</td>
+            <td>Business & Tech Architects</td>
+            <td>Minimum Viable Operating Capability</td>
+            <td>LGR Programme Board</td>
+            <td>ERP and Payroll selection.</td>
+            <td>Dictates the timeline for all other clusters.</td>
+          </tr>
+          <tr>
+            <td><strong>5. Tech, Data & AI</strong></td>
+            <td>Provide the shared digital foundations.</td>
+            <td>Head of IT / EA</td>
+            <td>Tech & Data Architects</td>
+            <td>Cyber Baseline, AI Policy</td>
+            <td>TDA / AI Board</td>
+            <td>Cloud hosting and network convergence.</td>
+            <td>Underpins every other LGR workstream.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-      <article class="cluster-detail">
-        <div class="cluster-detail-header">
-          <div class="num">3</div>
-          <div>
-            <h3>Place, Environment and Regulatory Services</h3>
-            <p>Place-based services, infrastructure, environment, regulation, enforcement, public realm and local resilience.</p>
-          </div>
-        </div>
-        <div class="cluster-service-grid">
-          <div class="cluster-service-box">
-            <h4>Local services in scope</h4>
-            <ul>
-              <li>Planning applications</li>
-              <li>Planning policy and local plan interfaces</li>
-              <li>Planning enforcement</li>
-              <li>Building control</li>
-              <li>Waste collection and recycling collection</li>
-              <li>Missed bins, bulky waste and street cleansing</li>
-              <li>Environmental health</li>
-              <li>Food safety, noise, pollution and pest control</li>
-              <li>Licensing and registration at district level</li>
-              <li>Parking, car parks and civil enforcement</li>
-              <li>Parks, open spaces, play areas and allotments</li>
-              <li>Cemeteries and crematoria</li>
-              <li>Local land, property and estates</li>
-              <li>Regeneration and economic development</li>
-              <li>Town centre management and markets</li>
-            </ul>
-          </div>
-          <div class="cluster-service-box">
-            <h4>County services in scope</h4>
-            <ul>
-              <li>Highways, roads and pavements</li>
-              <li>Highways maintenance and asset management</li>
-              <li>Traffic management and road safety</li>
-              <li>Street lighting</li>
-              <li>Rights of way</li>
-              <li>Transport planning and public transport coordination</li>
-              <li>School transport</li>
-              <li>Waste disposal and household recycling centres</li>
-              <li>Recycling, waste, environment and planning at county scale</li>
-              <li>Flood risk management</li>
-              <li>Minerals and waste planning</li>
-              <li>Business and trading standards</li>
-              <li>Consumer protection and business advice</li>
-              <li>Fire and rescue interfaces</li>
-              <li>Emergency planning and community protection</li>
-            </ul>
-          </div>
-          <div class="cluster-service-box">
-            <h4>Capabilities to design</h4>
-            <ul>
-              <li>UPRN, USRN and GIS foundations</li>
-              <li>Property, street, asset and location data</li>
-              <li>Regulatory case management</li>
-              <li>Inspection and enforcement workflow</li>
-              <li>Field working and mobile access</li>
-              <li>Contractor and partner integration</li>
-              <li>Operational reporting and performance</li>
-              <li>Climate, sustainability and net zero insight</li>
-              <li>Emergency response coordination</li>
-            </ul>
-          </div>
-        </div>
-      </article>
+    <div class="grid-2" style="margin-top: 24px;">
+      <div class="card green">
+        <h4>Governance Flow & Escalation</h4>
+        <p>Issues move from active working groups into formal governance to ensure traceability:</p>
+        <ol>
+          <li><strong>Working Group:</strong> Identifies a technical conflict (e.g., competing CRM systems).</li>
+          <li><strong>Architects:</strong> Draft an ADR outlining options, costs, and risks.</li>
+          <li><strong>ADA / TDA:</strong> Reviews and approves the technical approach.</li>
+          <li><strong>LGR Programme Board:</strong> Escalation point if the decision impacts statutory scope, high costs, or critical transition timelines.</li>
+        </ol>
+      </div>
+      <div class="card red" style="background:linear-gradient(180deg,#fff,var(--red-bg)); border-color:#f2b8b5;">
+        <h4 style="color:var(--red);">Key Dependencies</h4>
+        <ul>
+          <li><strong>Target Operating Model (TOM):</strong> Tech cannot be designed until the Business TOM is agreed.</li>
+          <li><strong>Contract Expiries:</strong> Legacy district contracts must not be renewed without ADA approval.</li>
+          <li><strong>Data Cleansing:</strong> Migration to unitary systems requires 12+ months of data prep.</li>
+        </ul>
+      </div>
+    </div>
 
-      <article class="cluster-detail">
-        <div class="cluster-detail-header">
-          <div class="num">4</div>
-          <div>
-            <h3>Corporate and Enabling Services</h3>
-            <p>The internal capabilities needed to keep the current council and future authority legal, funded, staffed, governed and operational.</p>
-          </div>
-        </div>
-        <div class="cluster-service-grid">
-          <div class="cluster-service-box">
-            <h4>Local services in scope</h4>
-            <ul>
-              <li>HR and organisational development</li>
-              <li>Payroll</li>
-              <li>Finance, income and payments</li>
-              <li>Council Tax, revenues and benefits administration</li>
-              <li>Procurement and contract management</li>
-              <li>Legal services</li>
-              <li>Democratic Services and member support</li>
-              <li>Elections and electoral registration</li>
-              <li>Governance, risk and audit</li>
-              <li>Policy and performance</li>
-              <li>Communications</li>
-              <li>Programme Management Office</li>
-              <li>Facilities and accommodation</li>
-            </ul>
-          </div>
-          <div class="cluster-service-box">
-            <h4>County services in scope</h4>
-            <ul>
-              <li>County-scale finance and budget management</li>
-              <li>County HR, payroll and workforce transition</li>
-              <li>Strategic commissioning</li>
-              <li>Adult and children’s care commissioning</li>
-              <li>Education and transport commissioning</li>
-              <li>Pensions administration interfaces</li>
-              <li>County legal services and litigation</li>
-              <li>Insurance and claims management</li>
-              <li>Corporate performance and statutory returns</li>
-              <li>County estates and accommodation strategy</li>
-              <li>County democratic and corporate governance interfaces</li>
-            </ul>
-          </div>
-          <div class="cluster-service-box">
-            <h4>Capabilities to design</h4>
-            <ul>
-              <li>Minimum viable operating capability</li>
-              <li>Workforce transition and role mapping</li>
-              <li>Financial disaggregation and aggregation</li>
-              <li>Scheme of delegation and decision routes</li>
-              <li>ERP, HR, payroll and finance foundations</li>
-              <li>Contract novation and supplier continuity</li>
-              <li>Records, retention and knowledge transfer</li>
-              <li>Corporate reporting and risk dashboards</li>
-            </ul>
-          </div>
-        </div>
-      </article>
-
-      <article class="cluster-detail">
-        <div class="cluster-detail-header">
-          <div class="num">5</div>
-          <div>
-            <h3>Technology, Data, AI and Shared Platforms</h3>
-            <p>The shared foundation layer for all service clusters. This includes technology, cyber, data, integration, reporting and responsible AI governance.</p>
-          </div>
-        </div>
-        <div class="cluster-service-grid">
-          <div class="cluster-service-box">
-            <h4>Local and shared platforms in scope</h4>
-            <ul>
-              <li>Identity and access management</li>
-              <li>Cyber security and security operations</li>
-              <li>Networks, connectivity and remote access</li>
-              <li>Cloud, hosting and data centre services</li>
-              <li>M365 and collaboration tools</li>
-              <li>End-user devices and field worker equipment</li>
-              <li>Backup, disaster recovery and resilience</li>
-              <li>IT service management</li>
-              <li>CRM, ERP, finance, HR and payroll platforms</li>
-              <li>Data platform, reporting and business intelligence</li>
-            </ul>
-          </div>
-          <div class="cluster-service-box">
-            <h4>County platforms and data in scope</h4>
-            <ul>
-              <li>Adult care systems</li>
-              <li>Children’s services systems</li>
-              <li>Education and SEND systems</li>
-              <li>Highways and transport systems</li>
-              <li>Library management systems</li>
-              <li>Trading standards systems</li>
-              <li>Fire and rescue interfaces</li>
-              <li>Public health data platforms</li>
-              <li>GIS and location platforms</li>
-              <li>County networks, identity and records platforms</li>
-            </ul>
-          </div>
-          <div class="cluster-service-box">
-            <h4>Capabilities to design</h4>
-            <ul>
-              <li>Architecture repository</li>
-              <li>Data catalogue, lineage and metadata</li>
-              <li>Single Customer Record and master data patterns</li>
-              <li>API management and integration patterns</li>
-              <li>Service catalogue and knowledge base</li>
-              <li>Payment, booking and notification patterns</li>
-              <li>Responsible AI approval and monitoring</li>
-              <li>Technology standards and reusable patterns</li>
-              <li>Architecture Decision Records</li>
-              <li>Readiness heatmaps and transition roadmap</li>
-            </ul>
-          </div>
-        </div>
-      </article>
-
+    <div class="callout" style="border-left-color: var(--blue); margin-top: 24px;">
+      <strong>Thinking and justification:</strong> 
+      <ul>
+        <li><strong>Organising by outcomes:</strong> LGR work must be organised around resident outcomes (clusters) and technical dependencies. Matrix management ensures we do not just "lift and shift" broken processes.</li>
+        <li><strong>Embedded architecture:</strong> Architecture operating separately from delivery becomes an academic bottleneck. By embedding architects in clusters, we reduce unmanaged risk and inconsistent shadow IT decisions.</li>
+        <li><strong>TOGAF alignment:</strong> This structure directly enables <a href="https://www.opengroup.org/togaf" target="_blank">TOGAF Standard</a> Phase B (Business Architecture - Clusters), Phase E (Opportunities and Solutions), Phase F (Migration Planning), and Phase G (Implementation Governance).</li>
+      </ul>
+      <em>National context and guidance: 
+        <a href="https://www.gov.uk/government/collections/local-government-reorganisation-policy-and-programme-updates" target="_blank">MHCLG LGR Policy</a> |
+        <a href="https://www.local.gov.uk/topics/devolution/devolution-hub/local-government-reorganisation-lgr" target="_blank">LGA LGR Hub</a> |
+        <a href="https://www.gov.uk/guidance/the-technology-code-of-practice" target="_blank">Technology Code of Practice</a>
+      </em>
     </div>
   </div>
 </section>
