@@ -422,15 +422,63 @@ a:hover{color:#1d4ed8;text-decoration:underline}
 
 <section class="section" id="why">
   <div class="panel">
-    <h2>Why this model exists</h2>
-    <p class="lead">The model exists to manage Local Government Reorganisation in a structured, supportive and low-risk way. It prevents one architect from carrying the full burden, gives SLT a clear view of risk and dependencies, and helps services fit together logically from the resident front door through to shared digital foundations.</p>
-    <div class="grid-4">
-      <div class="card green"><h3>Supportive by design</h3><p>Work is distributed across four architects, with shared governance and visible prioritisation.</p></div>
-      <div class="card blue"><h3>Resident-led</h3><p>The sequence starts with Customer Services and follows the resident journey into operational and enabling services.</p></div>
-      <div class="card purple"><h3>Clear accountability</h3><p>Each architect has a defined domain, linked to service areas, outputs and evidence.</p></div>
-      <div class="card amber"><h3>Better decisions</h3><p>SLT gets clearer options, risks, dependencies, trade-offs and escalation routes.</p></div>
+    <h2>Why This Model Exists</h2>
+    <p class="lead">Hertfordshire Local Government Reorganisation is a profound structural transition. This Enterprise Architecture Operating Model exists to ensure that service, data, application, and technology information is brought together into a single, shared view. We must define our architecture <em>before</em> making major design, procurement, or migration decisions to ensure we protect resident services and guarantee statutory continuity on vesting day.</p>
+    
+    <p>By connecting these layers, the model helps us identify hidden duplication, critical gaps, cross-service dependencies, and transition risks. Crucially, it shifts the Council from opinion-led assumptions to evidence-led, traceable decision-making.</p>
+
+    <h3>Core Objectives of the Model</h3>
+    <ul>
+      <li>To create a common, shared view of the current and future operating landscape.</li>
+      <li>To support safe, evidence-based transition planning.</li>
+      <li>To help diverse services understand their technical and data interdependencies.</li>
+      <li>To support robust, fast-paced architecture governance (ADA/TDA).</li>
+      <li>To improve decision traceability throughout the volatile LGR lifecycle.</li>
+      <li>To provide a rock-solid foundation for Day 1 readiness and post-vesting optimisation.</li>
+    </ul>
+
+    <div class="grid-2" style="margin-top: 24px;">
+      <div class="card green">
+        <h4>Key Benefits</h4>
+        <ul>
+          <li><strong>Statutory Protection:</strong> Ensures no mandatory council service falls offline during system mergers.</li>
+          <li><strong>Financial Control:</strong> Identifies duplicate legacy contracts before they are mistakenly renewed.</li>
+          <li><strong>Resident Continuity:</strong> Protects the resident journey from fragmented backend system changes.</li>
+        </ul>
+      </div>
+      <div class="card red" style="background:linear-gradient(180deg,#fff,var(--red-bg)); border-color:#f2b8b5;">
+        <h4 style="color:var(--red);">Risks Avoided</h4>
+        <ul>
+          <li><strong>Siloed Procurement:</strong> Prevents districts and the county from buying competing software.</li>
+          <li><strong>Data Loss:</strong> Stops unmapped, insecure data migrations.</li>
+          <li><strong>Vesting Day Failure:</strong> Eliminates blind spots in critical path dependencies.</li>
+        </ul>
+      </div>
     </div>
-    <div class="callout"><strong>Executive message:</strong> this is not a technical structure for its own sake. It is a practical delivery model for safer LGR design and transition.</div>
+
+    <div class="callout" style="margin-top: 24px;">
+      <strong>Suggested ArchiMate Viewpoint Description: LGR Capability & Transition Viewpoint</strong><br>
+      <em>Purpose:</em> To show how business capabilities map to target applications and data objects during transition.<br>
+      <em>Elements:</em> Business Capability, Business Process, Application Component, Data Object, Plateau (Transition State).<br>
+      <em>Use Case:</em> Used by ADA to verify that a proposed Day 1 state (Plateau) contains all necessary application components to deliver the required statutory capabilities.
+    </div>
+
+    <div class="callout" style="border-left-color: var(--blue); margin-top: 24px;">
+      <strong>Thinking and justification:</strong> 
+      <ul>
+        <li><strong>The problem solved:</strong> Complex public sector mergers frequently fail because technical decisions are made in silos without understanding business impact. This model forces a holistic view.</li>
+        <li><strong>Risks without it:</strong> Without this model, LGR risks massive cost overruns from duplicated IT, non-compliant data sharing, and disrupted frontline services for vulnerable residents.</li>
+        <li><strong>Decisions supported:</strong> It directly supports contract novation, application rationalisation, and target operating model approval.</li>
+        <li><strong>Public value created:</strong> Protects taxpayer money by preventing duplicated tech spend and ensures residents experience a seamless transition.</li>
+        <li><strong>TOGAF alignment:</strong> Directly supports the <a href="https://www.opengroup.org/togaf" target="_blank">TOGAF Standard</a> Preliminary Phase (establishing capability), Phase A (Vision), and Phase B (Business Architecture) by linking tech to business outcomes.</li>
+      </ul>
+      <em>National context and guidance: 
+        <a href="https://www.gov.uk/government/collections/local-government-reorganisation-policy-and-programme-updates" target="_blank">MHCLG LGR Policy</a> |
+        <a href="https://www.local.gov.uk/topics/devolution/devolution-hub/local-government-reorganisation-lgr" target="_blank">LGA Hub</a> |
+        <a href="https://architecture.cddo.cabinetoffice.gov.uk/gds-local/" target="_blank">LGAM</a> |
+        <a href="https://technology.blog.gov.uk/2026/04/14/publishing-a-common-architectural-model-for-local-government/" target="_blank">CDDO LGAM Blog</a>
+      </em>
+    </div>
   </div>
 </section>
 
