@@ -274,7 +274,12 @@ a:hover{text-decoration:underline}
 <div class="nav-title">Strategy and Appendices</div>
 <nav class="nav">
   <a href="#strategy">Overall Strategy</a>
-  <a href="#appendices">Appendices A to F</a>
+  <a href="#appendix-a">App A: EA Model</a>
+  <a href="#appendix-b">App B: Service Clusters</a>
+  <a href="#appendix-c">App C: Governance</a>
+  <a href="#appendix-d">App D: ADR Template</a>
+  <a href="#appendix-e">App E: Equality Impact</a>
+  <a href="#appendix-f">App F: RAG Risks</a>
 </nav>
 
   <div class="side-panel"><strong>Reviewed for preview</strong><span>All main content now opens inside this single HTML page using anchors, avoiding page-to-page preview issues.</span></div>
@@ -900,20 +905,195 @@ a:hover{text-decoration:underline}
 </section>
 
 
-<section class="section" id="appendices">
-  <div class="panel">
-    <h2>Appendices</h2>
-    <p class="lead">The appendices provide the detailed operating material beneath the strategy. They are included directly in this preview so they remain functional even if standalone page links do not open in some preview modes.</p>
-    <div class="appendix-grid">
-      <div class="appendix-card"><h3>Appendix A: EA Operating Model</h3><p>Defines the four-domain architecture team, working rhythm, principles, governance touchpoints and workload management.</p></div>
-      <div class="appendix-card"><h3>Appendix B: Service Cluster Model</h3><p>Defines the five service clusters and maps county and local services into one architecture structure.</p></div>
-      <div class="appendix-card"><h3>Appendix C: Governance Model</h3><p>Defines forums, decision categories, assurance levels, escalation routes and reporting.</p></div>
-      <div class="appendix-card"><h3>Appendix D: ADR Template</h3><p>Provides the structure for recording key architecture decisions, options, impacts, risks and sign-off.</p></div>
-      <div class="appendix-card"><h3>Appendix E: Equality Impact Assessment</h3><p>Ensures digital, data, AI and service changes consider equality, inclusion, access and vulnerable residents.</p></div>
-      <div class="appendix-card"><h3>Appendix F: RAG Risk Register</h3><p>Provides the SLT-facing risk view with rating, mitigation and ownership.</p></div>
-    </div>
-  </div>
-</section>
+
+
+<!-- APPENDIX A -->
+<section class="section hero" id="appendix-a" style="margin-top: 60px;"><span class="eyebrow">Stevenage • LGR • Enterprise Architecture</span><h2>Appendix A: Enterprise Architecture Operating Model</h2><p>The four-architect operating model, ways of working and TOGAF tailored architecture capability.</p></section>
+  
+<section class="section"><div class="panel">
+<h3>Purpose</h3>
+<p class="lead">Appendix A defines the Enterprise Architecture Operating Model for LGR. It explains how the four architects work together as a supportive team with clear domain leadership and shared accountability.</p>
+</div></section>
+<section class="section"><div class="panel">
+<h3>Operating Model Principles</h3>
+<div class="grid-4">
+<div class="card green"><h4>Supportive by design</h4><p>Workload is shared, visible and prioritised.</p></div>
+<div class="card blue"><h4>Service-led</h4><p>Architecture starts with resident and service outcomes.</p></div>
+<div class="card purple"><h4>Domain-led, not siloed</h4><p>Architects lead domains but make decisions together.</p></div>
+<div class="card amber"><h4>Proportionate governance</h4><p>High-risk decisions receive more assurance; low-risk work receives lighter support.</p></div>
+</div>
+</div></section>
+<section class="section"><div class="panel">
+<h3>EA Team Structure</h3>
+<div class="table-wrap"><table class="table">
+<thead><tr><th>Role</th><th>Primary accountability</th><th>Key focus</th></tr></thead>
+<tbody>
+<tr><td>Business Architect</td><td>Operating model and business architecture.</td><td>Capabilities, value streams, customer journeys, service design and business change.</td></tr>
+<tr><td>Data Architect</td><td>Enterprise data and information architecture.</td><td>Data domains, quality, migration, information governance, reporting and insight.</td></tr>
+<tr><td>Application & Digital Architect</td><td>Application, digital and integration architecture.</td><td>Applications, portals, CRM, ERP, case systems, APIs and supplier dependencies.</td></tr>
+<tr><td>Technology & Security Architect</td><td>Technology, cyber and infrastructure architecture.</td><td>Cloud, networks, identity, devices, cyber controls, resilience and technical standards.</td></tr>
+</tbody></table></div>
+</div></section>
+<section class="section"><div class="panel">
+<h3>Working Rhythm</h3>
+<ul>
+<li>Weekly EA stand-up to manage workload, priorities and blockers.</li>
+<li>Architecture Design Authority for cross-domain assurance.</li>
+<li>Technical Design Authority for technical and cyber assurance.</li>
+<li>AI Architecture Board for AI proposals and monitoring.</li>
+<li>Architecture Roadmap Review for transition states and dependencies.</li>
+</ul>
+<div class="callout"><strong>TOGAF alignment:</strong> Appendix A mainly supports the Preliminary Phase and Phase A by establishing the architecture capability, principles and governance context.</div>
+</div></section>
+
+<!-- APPENDIX B -->
+<section class="section hero" id="appendix-b" style="margin-top: 60px;"><span class="eyebrow">Stevenage • LGR • Enterprise Architecture</span><h2>Appendix B: Service Cluster Model</h2><p>The five-cluster model for grouping county, district and borough services in LGR.</p></section>
+  
+<section class="section"><div class="panel">
+<h3>Purpose</h3>
+<p class="lead">Appendix B defines the five service clusters used to organise LGR architecture work. It ensures county, district and borough services are brought together through one resident-led model.</p>
+</div></section>
+<section class="section"><div class="panel">
+<h3>County and local service lists</h3>
+<div class="grid-2">
+<div class="card blue"><h4>County-scale services</h4><ul><li>Adult social care</li><li>Children’s social care</li><li>Education and SEND</li><li>School admissions and transport</li><li>Public health</li><li>Libraries and archives</li><li>Highways and transport</li><li>Waste disposal and recycling centres</li><li>Trading standards</li><li>Fire/public safety interfaces</li><li>Emergency planning</li><li>Registration services</li></ul></div>
+<div class="card green"><h4>District / borough / local services</h4><ul><li>Customer Services</li><li>Housing and homelessness</li><li>Planning and building control</li><li>Waste collection and street cleansing</li><li>Environmental health</li><li>Licensing and parking</li><li>Parks, open spaces and allotments</li><li>Community safety</li><li>Council Tax and benefits</li><li>Regeneration and economic development</li><li>HR, Finance, Legal and Democratic Services</li></ul></div>
+</div>
+</div></section>
+<section class="section"><div class="panel">
+<h3>Five Service Clusters</h3>
+<div class="table-wrap"><table class="table">
+<thead><tr><th>Cluster</th><th>Scope</th><th>County additions</th><th>Architecture focus</th></tr></thead>
+<tbody>
+<tr><td>1. Customer, Access and Resident Experience</td><td>Customer Services, contact, web, CRM, complaints, FOI, assisted digital.</td><td>Adult care first contact, school admissions, Blue Badge, highways reporting, registration bookings.</td><td>Single front door, triage, accessibility, channel strategy and CRM routing.</td></tr>
+<tr><td>2. Community, Housing and People Services</td><td>Housing, homelessness, community safety, wellbeing and support for vulnerable residents.</td><td>Adult care, children’s services, SEND, public health, libraries and youth services.</td><td>Safeguarding, case management, sensitive data, multi-agency working and prevention.</td></tr>
+<tr><td>3. Place, Environment and Regulatory Services</td><td>Planning, waste collection, environmental health, licensing, parking and regeneration.</td><td>Highways, transport, waste disposal, flood risk, trading standards, emergency planning.</td><td>UPRN, USRN, GIS, assets, field working and regulatory case management.</td></tr>
+<tr><td>4. Corporate and Enabling Services</td><td>HR, Finance, Payroll, Legal, Procurement, Democratic Services and PMO.</td><td>County-scale corporate services, commissioning, pensions interfaces and insurance.</td><td>Vesting day operating capability, ERP, workforce, finance, contracts and governance.</td></tr>
+<tr><td>5. Technology, Data, AI and Shared Platforms</td><td>Identity, cyber, cloud, integration, reporting, M365 and shared data.</td><td>Care, education, highways, public health and county-wide platforms.</td><td>Shared foundations, resilience, integration, data platform and AI controls.</td></tr>
+</tbody></table></div>
+<div class="callout"><strong>TOGAF alignment:</strong> Appendix B supports Phase B Business Architecture and provides the organising structure for Phases C and D.</div>
+</div></section>
+
+<!-- APPENDIX C -->
+<section class="section hero" id="appendix-c" style="margin-top: 60px;"><span class="eyebrow">Stevenage • LGR • Enterprise Architecture</span><h2>Appendix C: Architecture Governance Model</h2><p>Architecture assurance, forums, decision routes and escalation for LGR.</p></section>
+  
+<section class="section"><div class="panel">
+<h3>Purpose</h3>
+<p class="lead">Appendix C defines the governance model that provides assurance, decision clarity and escalation routes for LGR architecture decisions.</p>
+</div></section>
+<section class="section"><div class="panel">
+<h3>Governance Forums</h3>
+<div class="grid-3">
+<div class="card green"><h4>EA Stand-up</h4><p>Weekly workload, priorities, blockers and support.</p></div>
+<div class="card blue"><h4>Architecture Design Authority</h4><p>Cross-domain design assurance and Architecture Decision Records.</p></div>
+<div class="card purple"><h4>Technical Design Authority</h4><p>Technical, cyber, cloud, infrastructure and resilience assurance.</p></div>
+<div class="card amber"><h4>AI Architecture Board</h4><p>AI proposal review, conditions, pilots and monitoring.</p></div>
+<div class="card rose"><h4>Roadmap Review</h4><p>Transition states, readiness, dependencies and exceptions.</p></div>
+<div class="card"><h4>LGR Programme Board</h4><p>Escalation for major risk, cost, scope, statutory or political decisions.</p></div>
+</div>
+</div></section>
+<section class="section"><div class="panel">
+<h3>Decision Flow</h3>
+<ol>
+<li>Proposal or project identifies architecture impact.</li>
+<li>EA triage determines assurance route.</li>
+<li>Relevant architects assess business, data, application, technology and AI implications.</li>
+<li>Design is reviewed by the appropriate forum.</li>
+<li>Decision is recorded through an ADR.</li>
+<li>Conditions, risks and dependencies are tracked.</li>
+<li>Escalations move to LGR Programme Board where required.</li>
+</ol>
+<div class="callout"><strong>TOGAF alignment:</strong> Appendix C mainly supports Phase G Implementation Governance and Phase H Architecture Change Management.</div>
+</div></section>
+
+<!-- APPENDIX D -->
+<section class="section hero" id="appendix-d" style="margin-top: 60px;"><span class="eyebrow">Stevenage • LGR • Enterprise Architecture</span><h2>Appendix D: Architecture Decision Record Template</h2><p>The template for recording and assuring architecture decisions.</p></section>
+  
+<section class="section"><div class="panel">
+<h3>Purpose</h3>
+<p class="lead">Appendix D provides the Architecture Decision Record template. ADRs make architecture decisions traceable, auditable and reusable.</p>
+</div></section>
+<section class="section"><div class="panel">
+<h3>ADR Template</h3>
+<div class="table-wrap"><table class="table">
+<thead><tr><th>Field</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>ADR Reference</td><td>Unique identifier for the decision.</td></tr>
+<tr><td>Title</td><td>Short description of the decision.</td></tr>
+<tr><td>Status</td><td>Proposed, Approved, Approved with Conditions, Rejected, Superseded.</td></tr>
+<tr><td>Owner</td><td>Decision owner and responsible architect.</td></tr>
+<tr><td>Service Cluster</td><td>Customer, People, Place, Corporate or Technology.</td></tr>
+<tr><td>Context</td><td>Problem, drivers, constraints and assumptions.</td></tr>
+<tr><td>Options Considered</td><td>Options, benefits, risks and costs.</td></tr>
+<tr><td>Decision</td><td>Chosen option and decision date.</td></tr>
+<tr><td>Rationale</td><td>Why this decision is recommended.</td></tr>
+<tr><td>Impacts</td><td>Business, data, application, technology, security, equality, AI, finance and legal impacts.</td></tr>
+<tr><td>Conditions</td><td>Any conditions required before implementation.</td></tr>
+<tr><td>Review Date</td><td>When the decision should be revisited.</td></tr>
+</tbody></table></div>
+<div class="callout"><strong>TOGAF alignment:</strong> Appendix D supports Requirements Management, Phase G and Phase H by recording decisions and managing change.</div>
+</div></section>
+
+<!-- APPENDIX E -->
+<section class="section hero" id="appendix-e" style="margin-top: 60px;"><span class="eyebrow">Stevenage • LGR • Enterprise Architecture</span><h2>Appendix E: Equality Impact Assessment</h2><p>Equality, accessibility, inclusion and AI fairness considerations for LGR architecture.</p></section>
+  
+<section class="section"><div class="panel">
+<h3>Purpose</h3>
+<p class="lead">Appendix E ensures LGR architecture decisions consider equality, accessibility, inclusion, vulnerability and digital exclusion from the start.</p>
+</div></section>
+<section class="section"><div class="panel">
+<h3>When an Equality Impact Assessment is required</h3>
+<ul>
+<li>Changes to resident access channels.</li>
+<li>New or changed digital services.</li>
+<li>Use of AI, automation or decision support.</li>
+<li>Changes involving vulnerable residents or protected characteristics.</li>
+<li>Changes to identity, authentication or assisted digital support.</li>
+<li>Service redesign affecting statutory or high-impact services.</li>
+<li>Data sharing or analytics affecting resident outcomes.</li>
+</ul>
+</div></section>
+<section class="section"><div class="panel">
+<h3>EIA Structure</h3>
+<div class="table-wrap"><table class="table">
+<thead><tr><th>Section</th><th>Questions to answer</th></tr></thead>
+<tbody>
+<tr><td>Proposal description</td><td>What is changing and why?</td></tr>
+<tr><td>Evidence and data</td><td>What evidence supports the assessment?</td></tr>
+<tr><td>Protected characteristics</td><td>Who may be positively or negatively affected?</td></tr>
+<tr><td>Digital access</td><td>Could residents be excluded by digital design, language, confidence, device or connectivity barriers?</td></tr>
+<tr><td>AI-specific checks</td><td>Could AI create bias, unfairness, opacity or inappropriate automation?</td></tr>
+<tr><td>Mitigations</td><td>What actions reduce risk and improve inclusion?</td></tr>
+<tr><td>Monitoring</td><td>How will impacts be reviewed after implementation?</td></tr>
+</tbody></table></div>
+<div class="callout"><strong>TOGAF alignment:</strong> Appendix E supports Requirements Management and all ADM phases by ensuring equality and inclusion are treated as core requirements.</div>
+</div></section>
+
+<!-- APPENDIX F -->
+<section class="section hero" id="appendix-f" style="margin-top: 60px;"><span class="eyebrow">Stevenage • LGR • Enterprise Architecture</span><h2>Appendix F: RAG Risk Register</h2><p>RAG-rated risks, impacts, mitigations and ownership.</p></section>
+  
+<section class="section"><div class="panel">
+<h3>Purpose</h3>
+<p class="lead">Appendix F provides the RAG-rated architecture risk register for SLT, programme teams and architects.</p>
+</div></section>
+<section class="section"><div class="panel">
+<h3>RAG Risk Register</h3>
+<div class="table-wrap"><table class="table">
+<thead><tr><th>RAG</th><th>Risk</th><th>Impact</th><th>Mitigation</th><th>Owner</th></tr></thead>
+<tbody>
+<tr><td><span class="rag red">Red</span></td><td>Architect capacity overload</td><td>Delays, weak assurance and reliance on single individuals.</td><td>Four-domain model, weekly prioritisation and shared cluster working.</td><td>Head of EA</td></tr>
+<tr><td><span class="rag red">Red</span></td><td>Sensitive people-service data not understood early enough</td><td>Safeguarding, legal and service-continuity risks.</td><td>Prioritise adult care, children’s services, SEND and safeguarding discovery.</td><td>Business / Data Architects</td></tr>
+<tr><td><span class="rag red">Red</span></td><td>Vesting day minimum capability unclear</td><td>Future authority may not operate reliably from day one.</td><td>Define minimum viable operating capability for HR, payroll, finance, legal, identity, cyber and statutory services.</td><td>Head of EA / Programme Board</td></tr>
+<tr><td><span class="rag amber">Amber</span></td><td>County and district services mapped in silos</td><td>Fragmented design and unclear resident journeys.</td><td>Use five service clusters as one architecture model.</td><td>Business Architect</td></tr>
+<tr><td><span class="rag amber">Amber</span></td><td>Application duplication continues</td><td>Cost, complexity and poor user experience.</td><td>Application-to-service matrix and rationalisation options.</td><td>Application & Digital Architect</td></tr>
+<tr><td><span class="rag amber">Amber</span></td><td>Data quality treated too late</td><td>Migration failure and weak reporting.</td><td>Early data-domain mapping and data quality plan.</td><td>Data Architect</td></tr>
+<tr><td><span class="rag amber">Amber</span></td><td>Inconsistent cyber and identity controls</td><td>Security exposure and access failures.</td><td>Define shared identity, access and cyber baseline.</td><td>Technology & Security Architect</td></tr>
+<tr><td><span class="rag amber">Amber</span></td><td>Informal AI adoption</td><td>Bias, privacy, security and trust risk.</td><td>AI operating model and AI Architecture Board.</td><td>AI Board</td></tr>
+<tr><td><span class="rag green">Green</span></td><td>Architecture too detailed for SLT</td><td>Reduced engagement.</td><td>Use portal as executive layer with appendices beneath.</td><td>Head of EA</td></tr>
+<tr><td><span class="rag green">Green</span></td><td>Decisions not reusable</td><td>Repeated debate and inconsistency.</td><td>Use ADRs and architecture repository.</td><td>All Architects</td></tr>
+</tbody></table></div>
+<div class="callout"><strong>TOGAF alignment:</strong> Appendix F supports Requirements Management, Migration Planning, Implementation Governance and Change Management.</div>
+</div></section>
 
   <div class="footer">Stevenage Borough Council • Local Government Reorganisation • Enterprise Architecture Go-To Portal • Service coverage baseline requires local validation</div>
 </main>
